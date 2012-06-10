@@ -3,13 +3,13 @@ package pms;
 import java.util.Random;
 
 /**
- * Simulate a senser measuring heart rate from one patient.
+ * Simulates a senser measuring heart rate from one patient.
  * Heart rate is generated randomly.
  *
  * @author Anthony
  * @version 0.1
  */
-public class HeartRateSenser implements Senser {
+public class HeartRateSenser extends Senser {
 	
 	private double MAXHEARTBEATS = 300;
 	private double MINHEARTBEATS = 25;
@@ -26,13 +26,12 @@ public class HeartRateSenser implements Senser {
 	}
 	
 	/**
-	 * Get the current heart rate of patient attached.
+	 * Get the current heart rate of the patient attached.
 	 * 
 	 * @return the heart rate of the patient
 	 * @exception HeartRateSenserNoSignalException when this heart rate senser failed.
 	 */
-	@Override
-	public double getValue() {
+	public double getBeats() {
 		return rand.nextDouble()
 			* (NORMALHIGHHEARTBEATS - NORMALLOWHEARTBEATS)
 			+ NORMALLOWHEARTBEATS;
