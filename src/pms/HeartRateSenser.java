@@ -13,7 +13,7 @@ public class HeartRateSenser extends Senser {
 	
 	public static final double MAX_HEARTBEATS = 300;
 	public static final double MIN_HEARTBEATS = 25;
-	public static final double NORMAL_HIGH__BEATS = 100;
+	public static final double NORMAL_HIGH_BEATS = 100;
 	public static final double NORMAL_LOW_BEATS = 60;
 	
 	private Random rand;
@@ -33,7 +33,7 @@ public class HeartRateSenser extends Senser {
 	 */
 	public double getBeats() {
 		return rand.nextDouble()
-			* (NORMAL_HIGH__BEATS - NORMAL_LOW_BEATS)
+			* (NORMAL_HIGH_BEATS - NORMAL_LOW_BEATS)
 			+ NORMAL_LOW_BEATS;
 	}
 	
