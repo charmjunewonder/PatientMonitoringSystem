@@ -1,6 +1,6 @@
 package pms;
 public class Patient {
-	private enum Gender {
+	public enum Gender {
 		MALE, FEMALE
 	}
 
@@ -146,5 +146,18 @@ public class Patient {
 	 */
 	public void setSpecificCondition(String specificCondition) {
 		this.specificCondition = specificCondition;
+	}
+
+	public String toString(){
+		return 	"Patient" +
+				"\nName: \t" + name +
+				"\nAddress: \t" + address +
+				"\nPatientNumber: \t" + patientNumber +
+				"\nAge: \t" + age +
+				"\nGender: \t" + gender +
+				"\nWeight: \t" + weight +
+				"\nHeight: \t" + height +
+				"\nSpecific Condition: \t" + specificCondition +
+				"\n";
 	}
 }
