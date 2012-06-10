@@ -13,7 +13,7 @@ public interface Display {
 	 * @param hearRete
 	 * @param warning
 	 */
-	public void displayHeartRate(int hearRete, boolean warning);
+	public void displayHeartRate(int heartRete, boolean warning);
 
 	/**
 	 * @param temperature
