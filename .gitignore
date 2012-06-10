@@ -6,3 +6,10 @@
 *.ear
 .DS_Store
 *.swp
+
+# Netbeans file #
+/nbproject/*
+/build/*
+/dist/*
+build.xml
+manifest.mf
