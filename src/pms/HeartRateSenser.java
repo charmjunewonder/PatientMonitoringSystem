@@ -11,10 +11,10 @@ import java.util.Random;
  */
 public class HeartRateSenser extends Senser {
 	
-	private double MAXHEARTBEATS = 300;
-	private double MINHEARTBEATS = 25;
-	private double NORMALHIGHHEARTBEATS = 100;
-	private double NORMALLOWHEARTBEATS = 60;
+	public static final double MAX_HEARTBEATS = 300;
+	public static final double MIN_HEARTBEATS = 25;
+	public static final double NORMAL_HIGH__BEATS = 100;
+	public static final double NORMAL_LOW_BEATS = 60;
 	
 	private Random rand;
 	
@@ -33,8 +33,8 @@ public class HeartRateSenser extends Senser {
 	 */
 	public double getBeats() {
 		return rand.nextDouble()
-			* (NORMALHIGHHEARTBEATS - NORMALLOWHEARTBEATS)
-			+ NORMALLOWHEARTBEATS;
+			* (NORMAL_HIGH__BEATS - NORMAL_LOW_BEATS)
+			+ NORMAL_LOW_BEATS;
 	}
 	
 	/**

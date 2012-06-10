@@ -10,10 +10,10 @@ import java.util.Random;
  */
 public class BloodPressureSenser extends Senser {
 	
-	private double NORMALHIGHPRESSUREUP = 139;
-	private double NORMALHIGHPRESSUREDOWN = 120;
-	private double NORMALLOWPRESSUREUP = 79;
-	private double NORMALLOWPRESSUREDOWN = 60;
+	public static final double NORMAL_HIGH_PRESSURE_UP = 139;
+	public static final double NORMAL_HIGH_PRESSURE_DOWN = 120;
+	public static final double NORMAL_LOW_PRESSURE_UP = 79;
+	public static final double NORMAL_LOW_PRESSURE_DOWN = 60;
 	
 	private Random rand;
 	
@@ -32,8 +32,8 @@ public class BloodPressureSenser extends Senser {
 	 */
 	public double getHighPressure() {
 		return rand.nextDouble()
-			* (NORMALHIGHPRESSUREUP - NORMALHIGHPRESSUREDOWN)
-			+ NORMALHIGHPRESSUREDOWN;
+			* (NORMAL_HIGH_PRESSURE_UP - NORMAL_HIGH_PRESSURE_DOWN)
+			+ NORMAL_HIGH_PRESSURE_DOWN;
 	}
 	
 	/**
@@ -44,8 +44,8 @@ public class BloodPressureSenser extends Senser {
 	 */
 	public double getLowPressure() {
 		return rand.nextDouble()
-			* (NORMALLOWPRESSUREUP - NORMALLOWPRESSUREDOWN)
-			+ NORMALLOWPRESSUREDOWN;
+			* (NORMAL_LOW_PRESSURE_UP - NORMAL_LOW_PRESSURE_DOWN)
+			+ NORMAL_LOW_PRESSURE_DOWN;
 	}
 	
 	/**
