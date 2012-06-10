@@ -4,6 +4,8 @@
 *.jar
 *.war
 *.ear
+.DS_Store
+*.swp
 
 # Netbeans file #
 /nbproject/*
