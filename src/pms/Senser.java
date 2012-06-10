@@ -6,15 +6,8 @@ package pms;
  * @author Anthony
  * @version 0.1
  */
-public interface Senser {
+public abstract class Senser {
 	
-	/**
-	 * Obtains measured value of specified vital sign.
-	 * 
-	 * @return measured value of one vital sign
-	 * @exception NoSignalException when a senser failed.
-	 */
-	double getValue();
 	
 	/**
 	 * Represents a no signal error when a senser failed.
