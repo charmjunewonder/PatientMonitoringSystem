@@ -1,3 +1,4 @@
+package pms;
 public class Patient {
 	private enum Gender {
 		MALE, FEMALE
