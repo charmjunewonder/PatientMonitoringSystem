@@ -6,6 +6,7 @@
 *.ear
 .DS_Store
 *.swp
+bin/pms/*.form
 
 # Netbeans file #
 /nbproject/*
