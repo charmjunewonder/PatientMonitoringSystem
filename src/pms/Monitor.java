@@ -189,8 +189,8 @@ public class Monitor {
 
 			@Override
 			public void run() {
-				Patient p = new Patient("sdf", "sdfsd", "sdfs", 34,
-						Gender.MALE, 34.3, 32.3, "sdf");
+				Patient p = new Patient("Eric", "Utopia", "BK001", 20,
+						Gender.MALE, 150.5, 188.0, "--");
 				new Monitor(p);
 			}
 		});

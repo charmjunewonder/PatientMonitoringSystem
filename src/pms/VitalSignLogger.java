@@ -14,6 +14,9 @@ import java.util.Calendar;
  */
 public class VitalSignLogger {
 	
+	public static final String LOGFOLDER = "logfiles/";
+	public static final String EXTENSION = "patientinfo";
+	
 	private PrintWriter out;
 	
 	/**
@@ -24,8 +27,10 @@ public class VitalSignLogger {
 	public VitalSignLogger(Patient patient) {
 		DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
 		Calendar cal = Calendar.getInstance();
-		String fileName = patient.getName()
-			+ dateFormat.format(cal.getTime()).toString();
+		String fileName = LOGFOLDER
+			+ patient.getName()
+			+ dateFormat.format(cal.getTime()).toString()
+			+ "." + EXTENSION;
 		try {
 			out = new PrintWriter(fileName);
 		}
@@ -34,6 +39,7 @@ public class VitalSignLogger {
 		}
 		out.println(patient);
 		out.println("********************");
+		out.flush();
 	}
 	
 	/**
@@ -44,7 +50,8 @@ public class VitalSignLogger {
 	public void addRecord(String data) {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Calendar cal = Calendar.getInstance();
-		out.println(dateFormat.format(cal.getTime()).toString() + "--" + data);
+		out.println(dateFormat.format(cal.getTime()).toString() + " " + data);
+		out.flush();
 	}
 	
 	/**
