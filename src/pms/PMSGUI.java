@@ -3,7 +3,7 @@ package pms;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import javax.swing.*;
+import javax.swing.JFrame;
 
 /**
  * GUI for Patient Monitoring System.
@@ -17,7 +17,8 @@ public class PMSGUI extends JFrame implements Display {
 	private static final Color NIBP_COLOR = new Color(0, 153, 255);
 	private static final Color GLU_COLOR = Color.YELLOW;
 	private static final Color TEMP_COLOR = new Color(255, 153, 51);
-	private static final Color WARNING_COLOR = Color.RED;
+	private static final Color WARNING_BACKGROUND_COLOR = Color.RED;
+	private static final Color WARNING_FOREGROUND_COLOR = Color.WHITE;
 	
 	private javax.swing.JLabel ageLabel;
 	private javax.swing.JLabel ageTitleLabel;
@@ -183,14 +184,17 @@ public class PMSGUI extends JFrame implements Display {
         medicalConditionScrollPane.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         medicalConditionScrollPane.setForeground(new java.awt.Color(255, 255, 255));
         medicalConditionScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        medicalConditionScrollPane.getViewport().setOpaque(false);
         medicalConditionScrollPane.setOpaque(false);
 
         medicalConditionTextArea.setBackground(new java.awt.Color(0, 0, 0));
         medicalConditionTextArea.setColumns(20);
+        medicalConditionTextArea.setEditable(false);
         medicalConditionTextArea.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         medicalConditionTextArea.setForeground(new java.awt.Color(255, 255, 255));
         medicalConditionTextArea.setRows(5);
         medicalConditionTextArea.setCaretColor(new java.awt.Color(255, 255, 255));
+        medicalConditionTextArea.setOpaque(false);
         medicalConditionScrollPane.setViewportView(medicalConditionTextArea);
 
         javax.swing.GroupLayout generalInfoPanelLayout = new javax.swing.GroupLayout(generalInfoPanel);
@@ -260,10 +264,11 @@ public class PMSGUI extends JFrame implements Display {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(medicalCondtionTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(medicalConditionScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                .addComponent(medicalConditionScrollPane)
                 .addContainerGap())
         );
 
+        ecgPanel.setBackground(WARNING_BACKGROUND_COLOR);
         ecgPanel.setBorder(javax.swing.BorderFactory.createLineBorder(ECG_COLOR));
         ecgPanel.setOpaque(false);
         ecgPanel.setPreferredSize(new java.awt.Dimension(240, 100));
@@ -272,7 +277,6 @@ public class PMSGUI extends JFrame implements Display {
         ecgTitleLabel.setForeground(ECG_COLOR);
         ecgTitleLabel.setText("ECG/Min");
 
-        ecgValueLabel.setBackground(new java.awt.Color(255, 0, 0));
         ecgValueLabel.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
         ecgValueLabel.setForeground(ECG_COLOR);
         ecgValueLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -285,7 +289,7 @@ public class PMSGUI extends JFrame implements Display {
                 .addContainerGap()
                 .addGroup(ecgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ecgPanelLayout.createSequentialGroup()
-                        .addComponent(ecgTitleLabel)
+                        .addComponent(ecgTitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(ecgValueLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -296,10 +300,11 @@ public class PMSGUI extends JFrame implements Display {
                 .addContainerGap()
                 .addComponent(ecgTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ecgValueLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                .addComponent(ecgValueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
+        gluPanel.setBackground(WARNING_BACKGROUND_COLOR);
         gluPanel.setBorder(javax.swing.BorderFactory.createLineBorder(GLU_COLOR));
         gluPanel.setOpaque(false);
         gluPanel.setPreferredSize(new java.awt.Dimension(240, 100));
@@ -319,9 +324,7 @@ public class PMSGUI extends JFrame implements Display {
             .addGroup(gluPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(gluPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(gluPanelLayout.createSequentialGroup()
-                        .addComponent(gluTitleLabel)
-                        .addGap(0, 115, Short.MAX_VALUE))
+                    .addComponent(gluTitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(gluValueLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -331,8 +334,8 @@ public class PMSGUI extends JFrame implements Display {
                 .addContainerGap()
                 .addComponent(gluTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(gluValueLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(6, 6, 6))
+                .addComponent(gluValueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         currentStatePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 153)));
@@ -345,15 +348,18 @@ public class PMSGUI extends JFrame implements Display {
         currentStateScrollPane.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         currentStateScrollPane.setForeground(new java.awt.Color(255, 255, 255));
         currentStateScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        currentStateScrollPane.getViewport().setOpaque(false);
         currentStateScrollPane.setOpaque(false);
 
         currentStateTextArea.setBackground(new java.awt.Color(0, 0, 0));
         currentStateTextArea.setColumns(20);
+        currentStateTextArea.setEditable(false);
         currentStateTextArea.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         currentStateTextArea.setForeground(new java.awt.Color(255, 255, 255));
         currentStateTextArea.setLineWrap(true);
         currentStateTextArea.setRows(3);
         currentStateTextArea.setCaretColor(new java.awt.Color(255, 255, 255));
+        currentStateTextArea.setOpaque(false);
         currentStateScrollPane.setViewportView(currentStateTextArea);
 
         javax.swing.GroupLayout currentStatePanelLayout = new javax.swing.GroupLayout(currentStatePanel);
@@ -379,6 +385,7 @@ public class PMSGUI extends JFrame implements Display {
                 .addContainerGap())
         );
 
+        temperaturePanel.setBackground(WARNING_BACKGROUND_COLOR);
         temperaturePanel.setBorder(javax.swing.BorderFactory.createLineBorder(TEMP_COLOR));
         temperaturePanel.setOpaque(false);
         temperaturePanel.setPreferredSize(new java.awt.Dimension(240, 120));
@@ -398,9 +405,7 @@ public class PMSGUI extends JFrame implements Display {
             .addGroup(temperaturePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(temperaturePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(temperaturePanelLayout.createSequentialGroup()
-                        .addComponent(tempTitleLabel)
-                        .addGap(0, 70, Short.MAX_VALUE))
+                    .addComponent(tempTitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
                     .addComponent(tempValueLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -409,11 +414,12 @@ public class PMSGUI extends JFrame implements Display {
             .addGroup(temperaturePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(tempTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
-                .addComponent(tempValueLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tempValueLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
+        nibpPanel.setBackground(WARNING_BACKGROUND_COLOR);
         nibpPanel.setBorder(javax.swing.BorderFactory.createLineBorder(NIBP_COLOR));
         nibpPanel.setOpaque(false);
         nibpPanel.setPreferredSize(new java.awt.Dimension(240, 100));
@@ -434,10 +440,11 @@ public class PMSGUI extends JFrame implements Display {
                 .addContainerGap()
                 .addGroup(nibpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(nibpPanelLayout.createSequentialGroup()
-                        .addComponent(nibpTitleLabel)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(nibpValueLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addComponent(nibpTitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                        .addContainerGap(32, Short.MAX_VALUE))
+                    .addGroup(nibpPanelLayout.createSequentialGroup()
+                        .addComponent(nibpValueLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         nibpPanelLayout.setVerticalGroup(
             nibpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -445,7 +452,7 @@ public class PMSGUI extends JFrame implements Display {
                 .addContainerGap()
                 .addComponent(nibpTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nibpValueLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                .addComponent(nibpValueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -473,8 +480,8 @@ public class PMSGUI extends JFrame implements Display {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(nibpPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(gluPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
-                    .addComponent(generalInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(gluPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(generalInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pmsInnerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(currentStatePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -487,14 +494,14 @@ public class PMSGUI extends JFrame implements Display {
             pmsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pmsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pmsInnerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
+                .addComponent(pmsInnerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         pmsPanelLayout.setVerticalGroup(
             pmsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pmsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pmsInnerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
+                .addComponent(pmsInnerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -522,10 +529,14 @@ public class PMSGUI extends JFrame implements Display {
 	public void displayHeartRate(double heartRate, boolean warning) {
 		ecgValueLabel.setText(Integer.toString((int)heartRate));
 		if(warning) {
-			ecgPanel.setBorder(javax.swing.BorderFactory.createLineBorder(WARNING_COLOR, 5));
+			ecgPanel.setOpaque(true);
+			ecgTitleLabel.setForeground(WARNING_FOREGROUND_COLOR);
+			ecgValueLabel.setForeground(WARNING_FOREGROUND_COLOR);
 		}
 		else {
-			ecgPanel.setBorder(javax.swing.BorderFactory.createLineBorder(ECG_COLOR));
+			ecgPanel.setOpaque(false);
+			ecgTitleLabel.setForeground(ECG_COLOR);
+			ecgValueLabel.setForeground(ECG_COLOR);
 		}
 	}
 
@@ -533,10 +544,14 @@ public class PMSGUI extends JFrame implements Display {
 	public void displayTemperature(double temperature, boolean warning) {
 		tempValueLabel.setText((String.format("%.1f", temperature)));
 		if(warning) {
-			temperaturePanel.setBorder(javax.swing.BorderFactory.createLineBorder(WARNING_COLOR, 5));
+			temperaturePanel.setOpaque(true);
+			tempTitleLabel.setForeground(WARNING_FOREGROUND_COLOR);
+			tempValueLabel.setForeground(WARNING_FOREGROUND_COLOR);
 		}
 		else {
-			temperaturePanel.setBorder(javax.swing.BorderFactory.createLineBorder(TEMP_COLOR));
+			temperaturePanel.setOpaque(false);
+			tempTitleLabel.setForeground(TEMP_COLOR);
+			tempValueLabel.setForeground(TEMP_COLOR);
 		}
 	}
 
@@ -544,10 +559,14 @@ public class PMSGUI extends JFrame implements Display {
 	public void displayBloodPressure(double highPressure, double lowPressure, boolean warning) {
 		nibpValueLabel.setText(Integer.toString((int)highPressure) + "/" + Integer.toString((int)lowPressure));
 		if(warning) {
-			nibpPanel.setBorder(javax.swing.BorderFactory.createLineBorder(WARNING_COLOR, 5));
+			nibpPanel.setOpaque(true);
+			nibpTitleLabel.setForeground(WARNING_FOREGROUND_COLOR);
+			nibpValueLabel.setForeground(WARNING_FOREGROUND_COLOR);
 		}
 		else {
-			nibpPanel.setBorder(javax.swing.BorderFactory.createLineBorder(NIBP_COLOR));
+			nibpPanel.setOpaque(false);
+			nibpTitleLabel.setForeground(NIBP_COLOR);
+			nibpValueLabel.setForeground(NIBP_COLOR);
 		}
 	}
 
@@ -555,10 +574,14 @@ public class PMSGUI extends JFrame implements Display {
 	public void displayBloodGlucoseLevel(double bloodGlucoseLevel, boolean warning) {
 		gluValueLabel.setText((String.format("%.1f", bloodGlucoseLevel)));
 		if(warning) {
-			gluPanel.setBorder(javax.swing.BorderFactory.createLineBorder(WARNING_COLOR, 5));
+			gluPanel.setOpaque(true);
+			gluTitleLabel.setForeground(WARNING_FOREGROUND_COLOR);
+			gluValueLabel.setForeground(WARNING_FOREGROUND_COLOR);
 		}
 		else {
-			gluPanel.setBorder(javax.swing.BorderFactory.createLineBorder(GLU_COLOR));
+			gluPanel.setOpaque(false);
+			gluTitleLabel.setForeground(GLU_COLOR);
+			gluValueLabel.setForeground(GLU_COLOR);
 		}
 	}
 
