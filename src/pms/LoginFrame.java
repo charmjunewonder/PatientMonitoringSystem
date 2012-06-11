@@ -1,275 +1,229 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package pms;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+import javax.swing.event.DocumentListener;
+import pms.Patient.Gender;
+
 /**
+ * LoginFrame of Patient Monitoring System.
  *
  * @author charmjunewonder
+ * @version 0.1
  */
-public class LoginFrame extends javax.swing.JFrame {
-
+public class LoginFrame extends JFrame{
+	private JLabel addressLabel;
+	private JTextField addressTextField;
+	private JLabel ageLabel;
+	private JTextField ageTextField;
+	private ButtonGroup genderButtonGroup;
+	private JRadioButton femaleRadioButton;
+	private JLabel genderLabel;
+	private JLabel heightLabel;
+	private JTextField heightTextField;
+	private JButton okButton;
+	private JLabel jLabel1;
+	private JPanel jPanel1;
+	private JScrollPane jScrollPane1;
+	private JRadioButton maleRadioButton;
+	private JLabel nameLabel;
+	private JTextField nameTextField;
+	private JTextField patientNumberTextField;
+	private JLabel patientNumerLabel;
+	private JLabel specificLabel;
+	private JTextArea specificTextArea;
+	private JLabel weightLabel;
+	private JTextField weightTextField;
+	
 	/**
-	 * Creates new form LoginFrame
+	 * Constructs a login Frame.
 	 */
-	public LoginFrame() {
+	public LoginFrame(){
 		initComponents();
 	}
-
+	
 	/**
-	 * @return the genderButtonGroup
+	 * Initialize components. 
 	 */
-	public javax.swing.ButtonGroup getGenderButtonGroup() {
-		return genderButtonGroup;
+	private void initComponents() {
+		
+		genderButtonGroup = new ButtonGroup();
+		jPanel1 = new JPanel();
+		jLabel1 = new JLabel();
+		nameLabel = new JLabel();
+		addressLabel = new JLabel();
+		patientNumerLabel = new JLabel();
+		ageLabel = new JLabel();
+		genderLabel = new JLabel();
+		weightLabel = new JLabel();
+		heightLabel = new JLabel();
+		specificLabel = new JLabel();
+		nameTextField = new JTextField();
+		addressTextField = new JTextField();
+		patientNumberTextField = new JTextField();
+		ageTextField = new JTextField();
+		weightTextField = new JTextField();
+		heightTextField = new JTextField();
+		jScrollPane1 = new JScrollPane();
+		specificTextArea = new JTextArea();
+		maleRadioButton = new JRadioButton();
+		femaleRadioButton = new JRadioButton();
+		okButton = new JButton();
+
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		setMinimumSize(new java.awt.Dimension(640, 480));
+		setPreferredSize(new java.awt.Dimension(640, 480));
+		setResizable(false);
+
+		jPanel1.setMinimumSize(new java.awt.Dimension(640, 480));
+		jPanel1.setPreferredSize(new java.awt.Dimension(640, 480));
+		jPanel1.setRequestFocusEnabled(false);
+		jPanel1.setLayout(null);
+
+		jLabel1.setText("Patient Monitoring System");
+		jPanel1.add(jLabel1);
+		jLabel1.setBounds(180, 10, 184, 17);
+
+		nameLabel.setText("Name: ");
+		jPanel1.add(nameLabel);
+		nameLabel.setBounds(70, 50, 40, 15);
+
+		addressLabel.setText("Address: ");
+		jPanel1.add(addressLabel);
+		addressLabel.setBounds(70, 80, 54, 15);
+
+		patientNumerLabel.setText("PatientNumber: ");
+		jPanel1.add(patientNumerLabel);
+		patientNumerLabel.setBounds(70, 110, 100, 15);
+
+		ageLabel.setText("Age: ");
+		jPanel1.add(ageLabel);
+		ageLabel.setBounds(70, 140, 30, 15);
+
+		genderLabel.setText("Gender: ");
+		jPanel1.add(genderLabel);
+		genderLabel.setBounds(70, 170, 48, 15);
+
+		weightLabel.setText("Weight: ");
+		jPanel1.add(weightLabel);
+		weightLabel.setBounds(70, 200, 48, 15);
+
+		heightLabel.setText("Height: ");
+		jPanel1.add(heightLabel);
+		heightLabel.setBounds(70, 230, 48, 15);
+
+		specificLabel.setText("Specific Medical Condition: ");
+		jPanel1.add(specificLabel);
+		specificLabel.setBounds(10, 265, 168, 20);
+
+		jPanel1.add(nameTextField);
+		nameTextField.setBounds(190, 50, 270, 21);
+
+		jPanel1.add(addressTextField);
+		addressTextField.setBounds(190, 80, 270, 21);
+		jPanel1.add(patientNumberTextField);
+		patientNumberTextField.setBounds(190, 110, 270, 21);
+		jPanel1.add(ageTextField);
+		ageTextField.setBounds(190, 140, 271, 21);
+		jPanel1.add(weightTextField);
+		weightTextField.setBounds(190, 200, 271, 21);
+		jPanel1.add(heightTextField);
+		heightTextField.setBounds(190, 230, 271, 21);
+
+		specificTextArea.setColumns(20);
+		specificTextArea.setRows(5);
+		jScrollPane1.setViewportView(specificTextArea);
+
+		jPanel1.add(jScrollPane1);
+		jScrollPane1.setBounds(190, 260, 271, 106);
+
+		genderButtonGroup.add(maleRadioButton);
+		maleRadioButton.setText("Male");
+
+		jPanel1.add(maleRadioButton);
+		maleRadioButton.setBounds(240, 170, 60, 23);
+
+		genderButtonGroup.add(femaleRadioButton);
+		femaleRadioButton.setText("Female");
+
+		jPanel1.add(femaleRadioButton);
+		femaleRadioButton.setBounds(350, 170, 70, 23);
+
+		okButton.setText("OK");
+		okButton.setEnabled(false);
+
+		jPanel1.add(okButton);
+		okButton.setBounds(550, 420, 70, 23);
+
+		getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+		
+		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+		int X = (screen.width / 2) - (getWidth() / 2); // Center horizontally.
+		int Y = (screen.height / 2) - (getHeight() / 2); // Center vertically.
+
+		setLocation(X, Y);
+
+		pack();
 	}
-
-	/**
-	 * @return the femaleRadioButton
-	 */
-	public javax.swing.JRadioButton getFemaleRadioButton() {
-		return femaleRadioButton;
+	
+	public String getPatientName() {
+		return nameTextField.getText();
 	}
-
-	/**
-	 * @return the maleRadioButton
-	 */
-	public javax.swing.JRadioButton getMaleRadioButton() {
-		return maleRadioButton;
+	
+	public String getPatientNumber() {
+		return patientNumberTextField.getText();
 	}
-
-	/**
-	 * @return the addressTextField
-	 */
-	public javax.swing.JTextField getAddressTextField() {
-		return addressTextField;
+	
+	public String getPatientAddress() {
+		return addressTextField.getText();
 	}
-
-	/**
-	 * @return the ageTextField
-	 */
-	public javax.swing.JTextField getAgeTextField() {
-		return ageTextField;
+	
+	public String getPatientAge() {
+		return ageTextField.getText();
 	}
-
-	/**
-	 * @return the heightTextField
-	 */
-	public javax.swing.JTextField getHeightTextField() {
-		return heightTextField;
-	}
-
-	/**
-	 * @return the nameTextField
-	 */
-	public javax.swing.JTextField getNameTextField() {
-		return nameTextField;
-	}
-
-	/**
-	 * @return the patientNumberTextField
-	 */
-	public javax.swing.JTextField getPatientNumberTextField() {
-		return patientNumberTextField;
-	}
-
-	/**
-	 * @return the specificTextArea
-	 */
-	public javax.swing.JTextArea getSpecificTextArea() {
-		return specificTextArea;
-	}
-
-	/**
-	 * @return the weightTextField
-	 */
-	public javax.swing.JTextField getWeightTextField() {
-		return weightTextField;
-	}
-
-	/**
-	 * This method is called from within the constructor to initialize the form.
-	 * WARNING: Do NOT modify this code. The content of this method is always
-	 * regenerated by the Form Editor.
-	 */
-	@SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        genderButtonGroup = new javax.swing.ButtonGroup();
-        jLabel1 = new javax.swing.JLabel();
-        nameLabel = new javax.swing.JLabel();
-        addressLabel = new javax.swing.JLabel();
-        patientNumerLabel = new javax.swing.JLabel();
-        ageLabel = new javax.swing.JLabel();
-        genderLabel = new javax.swing.JLabel();
-        weightLabel = new javax.swing.JLabel();
-        heightLabel = new javax.swing.JLabel();
-        specificLabel = new javax.swing.JLabel();
-        nameTextField = new javax.swing.JTextField();
-        addressTextField = new javax.swing.JTextField();
-        patientNumberTextField = new javax.swing.JTextField();
-        ageTextField = new javax.swing.JTextField();
-        weightTextField = new javax.swing.JTextField();
-        heightTextField = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        specificTextArea = new javax.swing.JTextArea();
-        maleRadioButton = new javax.swing.JRadioButton();
-        femaleRadioButton = new javax.swing.JRadioButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setText("Patient Monitoring System");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 36, -1, -1));
-
-        nameLabel.setText("Name: ");
-        getContentPane().add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 100, -1, -1));
-
-        addressLabel.setText("Address: ");
-        getContentPane().add(addressLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 149, -1, -1));
-
-        patientNumerLabel.setText("PatientNumber: ");
-        getContentPane().add(patientNumerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 192, -1, -1));
-
-        ageLabel.setText("Age: ");
-        getContentPane().add(ageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 237, -1, -1));
-
-        genderLabel.setText("Gender: ");
-        getContentPane().add(genderLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 282, -1, -1));
-
-        weightLabel.setText("Weight: ");
-        getContentPane().add(weightLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(151, 327, -1, -1));
-
-        heightLabel.setText("Height: ");
-        getContentPane().add(heightLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 367, -1, -1));
-
-        specificLabel.setText("Specific Medician Condition: ");
-        getContentPane().add(specificLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 408, -1, -1));
-
-        nameTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameTextFieldActionPerformed(evt);
-            }
-        });
-        getContentPane().add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 270, -1));
-
-        addressTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addressTextFieldActionPerformed(evt);
-            }
-        });
-        getContentPane().add(addressTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 270, -1));
-        getContentPane().add(patientNumberTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 270, -1));
-        getContentPane().add(ageTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(208, 231, 271, -1));
-        getContentPane().add(weightTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(208, 321, 271, -1));
-        getContentPane().add(heightTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(208, 361, 271, -1));
-
-        specificTextArea.setColumns(20);
-        specificTextArea.setRows(5);
-        jScrollPane1.setViewportView(specificTextArea);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(208, 408, 271, -1));
-
-        genderButtonGroup.add(maleRadioButton);
-        maleRadioButton.setText("Male");
-        maleRadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maleRadioButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(maleRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 278, -1, -1));
-
-        genderButtonGroup.add(femaleRadioButton);
-        femaleRadioButton.setText("Female");
-        femaleRadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                femaleRadioButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(femaleRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 278, -1, -1));
-
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
-
-	private void nameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextFieldActionPerformed
-		// TODO add your handling code here:
-	}//GEN-LAST:event_nameTextFieldActionPerformed
-
-	private void maleRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maleRadioButtonActionPerformed
-		// TODO add your handling code here:
-	}//GEN-LAST:event_maleRadioButtonActionPerformed
-
-	private void femaleRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_femaleRadioButtonActionPerformed
-		// TODO add your handling code here:
-	}//GEN-LAST:event_femaleRadioButtonActionPerformed
-
-	private void addressTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressTextFieldActionPerformed
-		// TODO add your handling code here:
-	}//GEN-LAST:event_addressTextFieldActionPerformed
-
-	/**
-	 * @param args the command line arguments
-	 */
-	public static void main(String args[]) {
-		/*
-		 * Set the Nimbus look and feel
-		 */
-		//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /*
-		 * If Nimbus (introduced in Java SE 6) is not available, stay with the
-		 * default look and feel. For details see
-		 * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-		 */
-		try {
-			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-				if ("Nimbus".equals(info.getName())) {
-					javax.swing.UIManager.setLookAndFeel(info.getClassName());
-					break;
-				}
-			}
-		} catch (ClassNotFoundException ex) {
-			java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (InstantiationException ex) {
-			java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (IllegalAccessException ex) {
-			java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+	
+	public Gender getPatientGender() {
+		if(maleRadioButton.isSelected()) {
+			return Gender.MALE;
 		}
-		//</editor-fold>
-
-		/*
-		 * Create and display the form
-		 */
-		java.awt.EventQueue.invokeLater(new Runnable() {
-
-			public void run() {
-				new LoginFrame().setVisible(true);
-			}
-		});
+		else if(femaleRadioButton.isSelected()) {
+			return Gender.FEMALE;
+		}
+		else {
+			return null;
+		}
 	}
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel addressLabel;
-    private javax.swing.JTextField addressTextField;
-    private javax.swing.JLabel ageLabel;
-    private javax.swing.JTextField ageTextField;
-    private javax.swing.ButtonGroup genderButtonGroup;
-    private javax.swing.JRadioButton femaleRadioButton;
-    private javax.swing.JLabel genderLabel;
-    private javax.swing.JLabel heightLabel;
-    private javax.swing.JTextField heightTextField;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JRadioButton maleRadioButton;
-    private javax.swing.JLabel nameLabel;
-    private javax.swing.JTextField nameTextField;
-    private javax.swing.JTextField patientNumberTextField;
-    private javax.swing.JLabel patientNumerLabel;
-    private javax.swing.JLabel specificLabel;
-    private javax.swing.JTextArea specificTextArea;
-    private javax.swing.JLabel weightLabel;
-    private javax.swing.JTextField weightTextField;
-    // End of variables declaration//GEN-END:variables
+	
+	public String getPatientWeight() {
+		return weightTextField.getText();
+	}
+	
+	public String getPatientHeight() {
+		return heightTextField.getText();
+	}
+	
+	public String getPatientSpecificCondition() {
+		return specificTextArea.getText();
+	}
+	
+	public void addOkButtonActionListener(ActionListener actionListener) {
+		okButton.addActionListener(actionListener);
+	}
+	
+	public void setOkButtonEnabled(boolean enabled) {
+		okButton.setEnabled(enabled);
+	}
+	
+	public void addChangedListener(DocumentListener documentListener) {
+		nameTextField.getDocument().addDocumentListener(documentListener);
+		patientNumberTextField.getDocument().addDocumentListener(documentListener);
+		addressTextField.getDocument().addDocumentListener(documentListener);
+		ageTextField.getDocument().addDocumentListener(documentListener);
+		weightTextField.getDocument().addDocumentListener(documentListener);
+		heightTextField.getDocument().addDocumentListener(documentListener);
+		specificTextArea.getDocument().addDocumentListener(documentListener);
+	}
+	
 }
