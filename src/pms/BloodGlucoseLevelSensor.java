@@ -27,8 +27,8 @@ public class BloodGlucoseLevelSensor  extends Senser{
 
 	public double getGlucoseLevel(){
 		double curGlucose = previousBloodGlucoseLevel + (rand.nextInt() % 10);
-		if(curGlucose < DEAD_LOW_BLOOD_GLUCOSE_LEVEL) curGlucose += 0.10;
-		else if(curGlucose > DEAD_HIGH_BLOOD_GLUCOSE_LEVEL) curGlucose -= 0.10;
+		if(curGlucose < DEAD_LOW_BLOOD_GLUCOSE_LEVEL) curGlucose += 5;
+		else if(curGlucose > DEAD_HIGH_BLOOD_GLUCOSE_LEVEL) curGlucose -= 5;
 		previousBloodGlucoseLevel = curGlucose;
 		return curGlucose;
 	}
