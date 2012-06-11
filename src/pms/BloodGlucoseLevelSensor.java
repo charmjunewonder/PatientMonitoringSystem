@@ -39,7 +39,8 @@ public class BloodGlucoseLevelSensor extends Senser {
 		int exceptionRandom = rand.nextInt(10);
 		if (exceptionRandom == 0)
 			throw new BloodGlucoseLevelNoSignalException();
-		double curGlucose = previousBloodGlucoseLevel + (rand.nextInt() % 10);
+//		double curGlucose = previousBloodGlucoseLevel + (rand.nextInt() % 10);
+		double curGlucose = (rand.nextDouble() - 0.5) * 200 + 100;
 		if (curGlucose < DEAD_LOW_BLOOD_GLUCOSE_LEVEL)
 			curGlucose += 5;
 		else if (curGlucose > DEAD_HIGH_BLOOD_GLUCOSE_LEVEL)

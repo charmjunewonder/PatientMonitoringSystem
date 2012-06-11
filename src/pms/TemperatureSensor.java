@@ -37,10 +37,11 @@ public class TemperatureSensor extends Senser{
 	public double getTemperature() throws TemperatureNoSignalException{
 		int exceptionRandom = rand.nextInt(10);
 		if(exceptionRandom == 0) throw new TemperatureNoSignalException();
-		double curTemp = previousTemperature + (rand.nextInt() % 10)* 0.005;
+//		double curTemp = previousTemperature + (rand.nextInt() % 10)* 0.005;
+		double curTemp = (rand.nextDouble() - 0.5) * 2 + 37.5;
 		if(curTemp < DEAD_LOW_TEMPERATURE) curTemp += 0.10;
 		else if(curTemp > DEAD_HIGH_TEMPERATURE) curTemp -= 0.10;
-		previousTemperature = curTemp;
+//		previousTemperature = curTemp;
 		return curTemp;
 	}
 

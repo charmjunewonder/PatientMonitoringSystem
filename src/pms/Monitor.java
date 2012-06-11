@@ -113,7 +113,7 @@ public class Monitor {
 				warning = true;
 			view.displayHeartRate(rate, warning);
 		} catch (HeartRateSenserNoSignalException hrsnse) {
-			view.displayHeartRate(0, true);
+			//TODO view.displayHeartRate(0, true);
 		}
 		view.repaint();
 	}
@@ -169,7 +169,7 @@ public class Monitor {
 				warning = true;
 			view.displayTemperature(temp, warning);
 		} catch (TemperatureNoSignalException e) {
-			//view.displayTemperature(0, true);
+			//TODO view.displayTemperature(0, true);
 		}
 
 		view.repaint();
