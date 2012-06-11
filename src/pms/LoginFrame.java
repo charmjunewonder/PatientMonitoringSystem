@@ -14,26 +14,28 @@ import pms.Patient.Gender;
  * @version 0.1
  */
 public class LoginFrame extends JFrame{
+	
 	private JLabel addressLabel;
 	private JTextField addressTextField;
+	private JLabel ageHintLabel;
 	private JLabel ageLabel;
 	private JTextField ageTextField;
+	private JScrollPane conditionScrollPane;
 	private ButtonGroup genderButtonGroup;
 	private JRadioButton femaleRadioButton;
 	private JLabel genderLabel;
 	private JLabel heightLabel;
 	private JTextField heightTextField;
-	private JButton okButton;
-	private JLabel jLabel1;
-	private JPanel jPanel1;
-	private JScrollPane jScrollPane1;
+	private JPanel loginPanel;
 	private JRadioButton maleRadioButton;
 	private JLabel nameLabel;
 	private JTextField nameTextField;
+	private JButton okButton;
+	private JLabel patientNumberLabel;
 	private JTextField patientNumberTextField;
-	private JLabel patientNumerLabel;
 	private JLabel specificLabel;
 	private JTextArea specificTextArea;
+	private JLabel titleLabel;
 	private JLabel weightLabel;
 	private JTextField weightTextField;
 	
@@ -48,14 +50,12 @@ public class LoginFrame extends JFrame{
 	 * Initialize components. 
 	 */
 	private void initComponents() {
-		
-		genderButtonGroup = new ButtonGroup();
-		jPanel1 = new JPanel();
-		jLabel1 = new JLabel();
+		loginPanel = new JPanel();
+		titleLabel = new JLabel();
 		nameLabel = new JLabel();
 		addressLabel = new JLabel();
-		patientNumerLabel = new JLabel();
-		ageLabel = new JLabel();
+		patientNumberLabel = new JLabel();
+		ageHintLabel = new JLabel();
 		genderLabel = new JLabel();
 		weightLabel = new JLabel();
 		heightLabel = new JLabel();
@@ -66,100 +66,130 @@ public class LoginFrame extends JFrame{
 		ageTextField = new JTextField();
 		weightTextField = new JTextField();
 		heightTextField = new JTextField();
-		jScrollPane1 = new JScrollPane();
+		conditionScrollPane = new JScrollPane();
 		specificTextArea = new JTextArea();
+		genderButtonGroup = new ButtonGroup();
 		maleRadioButton = new JRadioButton();
 		femaleRadioButton = new JRadioButton();
 		okButton = new JButton();
+		ageLabel = new JLabel();
 
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setMinimumSize(new java.awt.Dimension(640, 480));
-		setPreferredSize(new java.awt.Dimension(640, 480));
 		setResizable(false);
 
-		jPanel1.setMinimumSize(new java.awt.Dimension(640, 480));
-		jPanel1.setPreferredSize(new java.awt.Dimension(640, 480));
-		jPanel1.setRequestFocusEnabled(false);
-		jPanel1.setLayout(null);
+		loginPanel.setMinimumSize(new java.awt.Dimension(640, 480));
+		loginPanel.setPreferredSize(new java.awt.Dimension(640, 480));
+		loginPanel.setRequestFocusEnabled(false);
+		loginPanel.setLayout(null);
 
-		jLabel1.setText("Patient Monitoring System");
-		jPanel1.add(jLabel1);
-		jLabel1.setBounds(180, 10, 184, 17);
+		titleLabel.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
+		titleLabel.setText("Patient Monitoring System");
+		loginPanel.add(titleLabel);
+		titleLabel.setBounds(230, 10, 185, 21);
 
+		nameLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+		nameLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 		nameLabel.setText("Name: ");
-		jPanel1.add(nameLabel);
-		nameLabel.setBounds(70, 50, 40, 15);
+		nameLabel.setPreferredSize(new java.awt.Dimension(60, 22));
+		loginPanel.add(nameLabel);
+		nameLabel.setBounds(10, 50, 170, 20);
 
+		addressLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+		addressLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 		addressLabel.setText("Address: ");
-		jPanel1.add(addressLabel);
-		addressLabel.setBounds(70, 80, 54, 15);
+		loginPanel.add(addressLabel);
+		addressLabel.setBounds(10, 80, 170, 20);
 
-		patientNumerLabel.setText("PatientNumber: ");
-		jPanel1.add(patientNumerLabel);
-		patientNumerLabel.setBounds(70, 110, 100, 15);
+		patientNumberLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+		patientNumberLabel.setHorizontalAlignment(SwingConstants.TRAILING);
+		patientNumberLabel.setText("PatientNumber: ");
+		loginPanel.add(patientNumberLabel);
+		patientNumberLabel.setBounds(10, 110, 170, 20);
 
-		ageLabel.setText("Age: ");
-		jPanel1.add(ageLabel);
-		ageLabel.setBounds(70, 140, 30, 15);
+		ageHintLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+		ageHintLabel.setText("[1~999]");
+		ageHintLabel.setPreferredSize(new java.awt.Dimension(150, 20));
+		loginPanel.add(ageHintLabel);
+		ageHintLabel.setBounds(470, 140, 150, 20);
 
+		genderLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+		genderLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 		genderLabel.setText("Gender: ");
-		jPanel1.add(genderLabel);
-		genderLabel.setBounds(70, 170, 48, 15);
+		loginPanel.add(genderLabel);
+		genderLabel.setBounds(10, 170, 170, 20);
 
+		weightLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+		weightLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 		weightLabel.setText("Weight: ");
-		jPanel1.add(weightLabel);
-		weightLabel.setBounds(70, 200, 48, 15);
+		loginPanel.add(weightLabel);
+		weightLabel.setBounds(10, 200, 170, 20);
 
+		heightLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+		heightLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 		heightLabel.setText("Height: ");
-		jPanel1.add(heightLabel);
-		heightLabel.setBounds(70, 230, 48, 15);
+		loginPanel.add(heightLabel);
+		heightLabel.setBounds(10, 230, 170, 20);
 
-		specificLabel.setText("Specific Medical Condition: ");
-		jPanel1.add(specificLabel);
-		specificLabel.setBounds(10, 265, 168, 20);
+		specificLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+		specificLabel.setHorizontalAlignment(SwingConstants.TRAILING);
+		specificLabel.setText("Medical Condition: ");
+		loginPanel.add(specificLabel);
+		specificLabel.setBounds(10, 260, 170, 20);
 
-		jPanel1.add(nameTextField);
+		loginPanel.add(nameTextField);
 		nameTextField.setBounds(190, 50, 270, 21);
 
-		jPanel1.add(addressTextField);
+		loginPanel.add(addressTextField);
 		addressTextField.setBounds(190, 80, 270, 21);
-		jPanel1.add(patientNumberTextField);
+		loginPanel.add(patientNumberTextField);
 		patientNumberTextField.setBounds(190, 110, 270, 21);
-		jPanel1.add(ageTextField);
+
+		ageTextField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+		loginPanel.add(ageTextField);
 		ageTextField.setBounds(190, 140, 271, 21);
-		jPanel1.add(weightTextField);
+		loginPanel.add(weightTextField);
 		weightTextField.setBounds(190, 200, 271, 21);
-		jPanel1.add(heightTextField);
+		loginPanel.add(heightTextField);
 		heightTextField.setBounds(190, 230, 271, 21);
 
 		specificTextArea.setColumns(20);
-		specificTextArea.setRows(5);
-		jScrollPane1.setViewportView(specificTextArea);
+		specificTextArea.setRows(8);
+		conditionScrollPane.setViewportView(specificTextArea);
 
-		jPanel1.add(jScrollPane1);
-		jScrollPane1.setBounds(190, 260, 271, 106);
+		loginPanel.add(conditionScrollPane);
+		conditionScrollPane.setBounds(190, 260, 271, 160);
 
-		genderButtonGroup.add(maleRadioButton);
-		maleRadioButton.setText("Male");
+		maleRadioButton.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 		maleRadioButton.setSelected(true);
+		maleRadioButton.setText("Male");
+		genderButtonGroup.add(maleRadioButton);
 
-		jPanel1.add(maleRadioButton);
-		maleRadioButton.setBounds(240, 170, 60, 23);
+		loginPanel.add(maleRadioButton);
+		maleRadioButton.setBounds(240, 170, 60, 25);
 
-		genderButtonGroup.add(femaleRadioButton);
+		femaleRadioButton.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 		femaleRadioButton.setText("Female");
+		genderButtonGroup.add(femaleRadioButton);
 
-		jPanel1.add(femaleRadioButton);
-		femaleRadioButton.setBounds(350, 170, 70, 23);
+		loginPanel.add(femaleRadioButton);
+		femaleRadioButton.setBounds(350, 170, 80, 25);
 
+		okButton.setFont(okButton.getFont().deriveFont(okButton.getFont().getSize() + 2f));
 		okButton.setText("OK");
-		okButton.setEnabled(false);
 
-		jPanel1.add(okButton);
-		okButton.setBounds(550, 420, 70, 23);
+		loginPanel.add(okButton);
+		okButton.setBounds(550, 440, 70, 25);
 
-		getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
-		
+		ageLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+		ageLabel.setHorizontalAlignment(SwingConstants.TRAILING);
+		ageLabel.setText("Age: ");
+		ageLabel.setPreferredSize(new java.awt.Dimension(150, 20));
+		loginPanel.add(ageLabel);
+		ageLabel.setBounds(10, 140, 170, 20);
+
+		getContentPane().add(loginPanel, java.awt.BorderLayout.CENTER);
+
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		int X = (screen.width / 2) - (getWidth() / 2); // Center horizontally.
 		int Y = (screen.height / 2) - (getHeight() / 2); // Center vertically.

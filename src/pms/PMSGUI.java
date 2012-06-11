@@ -12,6 +12,12 @@ import javax.swing.*;
  * @version 0.1
  */
 public class PMSGUI extends JFrame implements Display {
+	
+	private static final Color ECG_COLOR = Color.GREEN;
+	private static final Color NIBP_COLOR = new Color(0, 153, 255);
+	private static final Color GLU_COLOR = Color.YELLOW;
+	private static final Color TEMP_COLOR = new Color(255, 153, 51);
+	
 	private JLabel nameLabel;
 	private JLabel patientNumberLabel;
 	private JLabel heightLabel;
@@ -258,11 +264,11 @@ public class PMSGUI extends JFrame implements Display {
         jPanel4.setPreferredSize(new java.awt.Dimension(240, 100));
 
         jLabel18.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(0, 255, 0));
+        jLabel18.setForeground(ECG_COLOR);
         jLabel18.setText("ECG/Min");
 
         ecgLabel.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
-        ecgLabel.setForeground(new java.awt.Color(0, 255, 51));
+        ecgLabel.setForeground(ECG_COLOR);
         ecgLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -293,11 +299,11 @@ public class PMSGUI extends JFrame implements Display {
         jPanel5.setPreferredSize(new java.awt.Dimension(240, 100));
 
         jLabel22.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel22.setForeground(GLU_COLOR);
         jLabel22.setText("GLU/mM");
 
         gluLabel.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
-        gluLabel.setForeground(new java.awt.Color(255, 255, 0));
+        gluLabel.setForeground(GLU_COLOR);
         gluLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -373,11 +379,11 @@ public class PMSGUI extends JFrame implements Display {
         jPanel7.setPreferredSize(new java.awt.Dimension(240, 120));
 
         jLabel24.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel24.setForeground(TEMP_COLOR);
         jLabel24.setText("TEMP/Celsius");
 
         tempLabel.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
-        tempLabel.setForeground(new java.awt.Color(255, 153, 51));
+        tempLabel.setForeground(TEMP_COLOR);
         tempLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -408,11 +414,11 @@ public class PMSGUI extends JFrame implements Display {
         jPanel8.setPreferredSize(new java.awt.Dimension(240, 100));
 
         jLabel20.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(0, 153, 255));
+        jLabel20.setForeground(NIBP_COLOR);
         jLabel20.setText("NIBP/mmHg");
 
         nibpLabel.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
-        nibpLabel.setForeground(new java.awt.Color(0, 153, 255));
+        nibpLabel.setForeground(NIBP_COLOR);
         nibpLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -514,7 +520,7 @@ public class PMSGUI extends JFrame implements Display {
 			jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(Color.RED, 5));
 		}
 		else {
-			jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(Color.RED));
+			jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(0, 255, 51)));
 		}
 	}
 
@@ -525,7 +531,7 @@ public class PMSGUI extends JFrame implements Display {
 			jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(Color.RED, 5));
 		}
 		else {
-			jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(Color.RED));
+			jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(255, 153, 51)));
 		}
 	}
 
@@ -536,7 +542,7 @@ public class PMSGUI extends JFrame implements Display {
 			jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(Color.RED, 5));
 		}
 		else {
-			jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(Color.RED));
+			jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(0, 153, 255)));
 		}
 	}
 
@@ -547,7 +553,7 @@ public class PMSGUI extends JFrame implements Display {
 			jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(Color.RED, 5));
 		}
 		else {
-			jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(Color.RED));
+			jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(255, 255, 0)));
 		}
 	}
 
