@@ -531,7 +531,7 @@ public class PMSGUI extends JFrame implements Display {
 
 	@Override
 	public void displayTemperature(double temperature, boolean warning) {
-		tempValueLabel.setText(Integer.toString((int)temperature));
+		tempValueLabel.setText((String.format("%.1f", temperature)));
 		if(warning) {
 			temperaturePanel.setBorder(javax.swing.BorderFactory.createLineBorder(WARNING_COLOR, 5));
 		}
@@ -553,7 +553,7 @@ public class PMSGUI extends JFrame implements Display {
 
 	@Override
 	public void displayBloodGlucoseLevel(double bloodGlucoseLevel, boolean warning) {
-		gluValueLabel.setText(Integer.toString((int)bloodGlucoseLevel));
+		gluValueLabel.setText((String.format("%.1f", bloodGlucoseLevel)));
 		if(warning) {
 			gluPanel.setBorder(javax.swing.BorderFactory.createLineBorder(WARNING_COLOR, 5));
 		}
