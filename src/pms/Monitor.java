@@ -17,7 +17,7 @@ import pms.TemperatureSensor.TemperatureNoSignalException;
  * 
  */
 public class Monitor {
-	
+
 	public static final int BLOOD_GLUCOSE_LEVEL_TIME = 100;
 	public static final int BLOOD_PRESSURE_TIME = 100;
 	public static final int TEMPERATURE_TIME = 100;
@@ -29,6 +29,12 @@ public class Monitor {
 	private BloodPressureSenser bloodPressureSensor;
 	private TemperatureSensor temperatureSensor;
 	private HeartRateSenser heartRateSensor;
+	private IntravenousInputMachine intravenousInputMachine;
+
+	private boolean glucoseOutOfLifeLimit;
+	private boolean pressureOutOfLifeLimit;
+	private boolean temperatureOutOfLifeLimit;
+	private boolean rateOutOfLifeLimit;
 
 	/**
 	 * @param patient
@@ -40,6 +46,7 @@ public class Monitor {
 		bloodPressureSensor = new BloodPressureSenser();
 		temperatureSensor = new TemperatureSensor();
 		heartRateSensor = new HeartRateSenser();
+		intravenousInputMachine = new IntravenousInputMachine();
 		start();
 	}
 
@@ -74,6 +81,16 @@ public class Monitor {
 			}
 		};
 		new Timer(HEART_RATE_TIME, heartAction).start();
+
+		ActionListener intravenousInputAction = new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (glucoseOutOfLifeLimit && pressureOutOfLifeLimit
+						&& temperatureOutOfLifeLimit && rateOutOfLifeLimit) {
+					intravenousInputMachine.activate();
+				}
+			}
+		};
+		new Timer(100, intravenousInputAction).start();
 	}
 
 	public void processHeartRate() {
