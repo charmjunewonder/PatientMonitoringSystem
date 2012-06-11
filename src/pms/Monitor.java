@@ -30,6 +30,7 @@ public class Monitor {
 	private TemperatureSensor temperatureSensor;
 	private HeartRateSenser heartRateSensor;
 	private IntravenousInputMachine intravenousInputMachine;
+	private VitalSignLogger vitalSignLogger;
 
 	private boolean glucoseOutOfLifeLimit;
 	private boolean pressureOutOfLifeLimit;
@@ -43,11 +44,14 @@ public class Monitor {
 	public Monitor(Patient patient) {
 		view = new PMSGUI(patient);
 		view.setVisible(true);
+		
 		bloodGlucoseLevelSensor = new BloodGlucoseLevelSensor();
 		bloodPressureSensor = new BloodPressureSenser();
 		temperatureSensor = new TemperatureSensor();
 		heartRateSensor = new HeartRateSenser();
 		intravenousInputMachine = new IntravenousInputMachine();
+		vitalSignLogger = new VitalSignLogger(patient);
+		
 		start();
 	}
 
@@ -113,6 +117,7 @@ public class Monitor {
 					|| rate < HeartRateSenser.NORMAL_LOW_BEATS)
 				rateOutOfLifeLimit = true;
 			view.displayHeartRate(rate, rateOutOfLifeLimit);
+			vitalSignLogger.addRecord("Heart Rate: " + (int)rate);
 		} catch (HeartRateSenserNoSignalException hrsnse) {
 			//TODO view.displayHeartRate(0, true);
 		}
@@ -133,6 +138,7 @@ public class Monitor {
 					|| lowPressure < BloodPressureSenser.NORMAL_LOW_PRESSURE_DOWN)
 				pressureOutOfLifeLimit = true;
 			view.displayBloodPressure(highPressure, lowPressure, pressureOutOfLifeLimit);
+			vitalSignLogger.addRecord("Pressure low: " + (int)lowPressure + "; high: " + (int)highPressure);
 		} catch (BloodPressureNoSignalException e) {
 			//TODO view.displayBloodPressure(0, 0, true);
 		}
@@ -151,6 +157,7 @@ public class Monitor {
 					|| glucose < BloodGlucoseLevelSensor.NORMAL_LOW_BLOOD_GLUCOSE_LEVEL)
 				glucoseOutOfLifeLimit = true;
 			view.displayBloodGlucoseLevel(glucose, glucoseOutOfLifeLimit);
+			vitalSignLogger.addRecord("Blood Glucose Level: " + (int)glucose);
 		} catch (BloodGlucoseLevelNoSignalException e) {
 			//TODO view.displayBloodGlucoseLevel(0, true);
 		}
@@ -169,6 +176,7 @@ public class Monitor {
 					|| temp < TemperatureSensor.NORMAL_LOW_TEMPERATURE)
 				temperatureOutOfLifeLimit = true;
 			view.displayTemperature(temp, temperatureOutOfLifeLimit);
+			vitalSignLogger.addRecord("Temperature: " + String.format("%.1f", temp));
 		} catch (TemperatureNoSignalException e) {
 			//TODO view.displayTemperature(0, true);
 		}
