@@ -17,491 +17,496 @@ public class PMSGUI extends JFrame implements Display {
 	private static final Color NIBP_COLOR = new Color(0, 153, 255);
 	private static final Color GLU_COLOR = Color.YELLOW;
 	private static final Color TEMP_COLOR = new Color(255, 153, 51);
+	private static final Color WARNING_COLOR = Color.RED;
 	
-	private JLabel nameLabel;
-	private JLabel patientNumberLabel;
-	private JLabel heightLabel;
-	private JLabel ageLabel;
-	private JLabel genderLabel;
-	private JLabel weightLabel;
-	private JTextArea conditionTextArea;
-	private JTextArea stateTextArea;
+	private javax.swing.JLabel ageLabel;
+	private javax.swing.JLabel ageTitleLabel;
+	private javax.swing.JPanel currentStatePanel;
+	private javax.swing.JScrollPane currentStateScrollPane;
+	private javax.swing.JTextArea currentStateTextArea;
+	private javax.swing.JLabel currentStateTitleLabel;
+	private javax.swing.JPanel ecgPanel;
+	private javax.swing.JLabel ecgTitleLabel;
+	private javax.swing.JLabel ecgValueLabel;
+	private javax.swing.JLabel genderLabel;
+	private javax.swing.JLabel genderTitleLabel;
+	private javax.swing.JPanel generalInfoPanel;
+	private javax.swing.JPanel gluPanel;
+	private javax.swing.JLabel gluTitleLabel;
+	private javax.swing.JLabel gluValueLabel;
+	private javax.swing.JLabel heightLabel;
+	private javax.swing.JLabel heightTitleLabel;
+	private javax.swing.JScrollPane medicalConditionScrollPane;
+	private javax.swing.JTextArea medicalConditionTextArea;
+	private javax.swing.JLabel medicalCondtionTitleLabel;
+	private javax.swing.JLabel nameLabel;
+	private javax.swing.JLabel nameTitleLabel;
+	private javax.swing.JPanel nibpPanel;
+	private javax.swing.JLabel nibpTitleLabel;
+	private javax.swing.JLabel nibpValueLabel;
+	private javax.swing.JLabel patientNumberLabel;
+	private javax.swing.JLabel patientNumberTitleLabel;
+	private javax.swing.JPanel pmsInnerPanel;
+	private javax.swing.JPanel pmsPanel;
+	private javax.swing.JLabel tempTitleLabel;
+	private javax.swing.JLabel tempValueLabel;
+	private javax.swing.JPanel temperaturePanel;
+	private javax.swing.JLabel weightLabel;
+	private javax.swing.JLabel weightTitleLabel;
 	
-	private JLabel ecgLabel;
-	private JLabel nibpLabel;
-	private JLabel gluLabel;
-	private JLabel tempLabel;
-	
-	private JLabel jLabel15;
-	private JLabel jLabel18;
-	private JLabel jLabel2;
-	private JLabel jLabel20;
-	private JLabel jLabel22;
-	private JLabel jLabel24;
-	private JLabel jLabel4;
-	private JLabel jLabel5;
-	private JLabel jLabel6;
-	private JLabel jLabel7;
-	private JLabel jLabel8;
-	private JLabel jLabel9;
-	private JPanel jPanel1;
-	private JPanel jPanel2;
-	private JPanel jPanel3;
-	private JPanel jPanel4;
-	private JPanel jPanel5;
-	private JPanel jPanel6;
-	private JPanel jPanel7;
-	private JPanel jPanel8;
-	private JScrollPane jScrollPane1;
-	private JScrollPane jScrollPane2;
-	
+	/**
+	 * Constructs a PMSGUI.
+	 * 
+	 * @param patient patient information to show
+	 */
 	public PMSGUI(Patient patient) {
-		initialiseComponents();
+		initComponents();
+		
 		nameLabel.setText(patient.getName());
 		patientNumberLabel.setText(patient.getPatientNumber());
 		ageLabel.setText(Integer.toString(patient.getAge()));
 		genderLabel.setText(patient.getGender().toString());
 		heightLabel.setText(Double.toString(patient.getHeight()));
 		weightLabel.setText(Double.toString(patient.getWeight()));
-		conditionTextArea.setText(patient.getSpecificCondition());
+		medicalConditionTextArea.setText(patient.getSpecificCondition());
 	}
 	
 	/**
 	 * initial the components of PMSGUI.
 	 */
-	private void initialiseComponents() {
-		jPanel1 = new JPanel();
-		jPanel2 = new JPanel();
-		jPanel3 = new JPanel();
-		jLabel2 = new JLabel();
-		nameLabel = new JLabel();
-		jLabel4 = new JLabel();
-		jLabel5 = new JLabel();
-		jLabel6 = new JLabel();
-		jLabel7 = new JLabel();
-		jLabel8 = new JLabel();
-		jLabel9 = new JLabel();
-		patientNumberLabel = new JLabel();
-		heightLabel = new JLabel();
-		ageLabel = new JLabel();
-		genderLabel = new JLabel();
-		weightLabel = new JLabel();
-		jScrollPane1 = new JScrollPane();
-		conditionTextArea = new JTextArea();
-		jPanel4 = new JPanel();
-		jLabel18 = new JLabel();
-		ecgLabel = new JLabel();
-		jPanel5 = new JPanel();
-		jLabel22 = new JLabel();
-		gluLabel = new JLabel();
-		jPanel6 = new JPanel();
-		jLabel15 = new JLabel();
-		jScrollPane2 = new JScrollPane();
-		stateTextArea = new JTextArea();
-		jPanel7 = new JPanel();
-		jLabel24 = new JLabel();
-		tempLabel = new JLabel();
-		jPanel8 = new JPanel();
-		jLabel20 = new JLabel();
-		nibpLabel = new JLabel();
+	private void initComponents() {
+		
+        pmsPanel = new javax.swing.JPanel();
+        pmsInnerPanel = new javax.swing.JPanel();
+        generalInfoPanel = new javax.swing.JPanel();
+        nameTitleLabel = new javax.swing.JLabel();
+        patientNumberTitleLabel = new javax.swing.JLabel();
+        ageTitleLabel = new javax.swing.JLabel();
+        genderTitleLabel = new javax.swing.JLabel();
+        weightTitleLabel = new javax.swing.JLabel();
+        heightTitleLabel = new javax.swing.JLabel();
+        medicalCondtionTitleLabel = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
+        patientNumberLabel = new javax.swing.JLabel();
+        heightLabel = new javax.swing.JLabel();
+        ageLabel = new javax.swing.JLabel();
+        genderLabel = new javax.swing.JLabel();
+        weightLabel = new javax.swing.JLabel();
+        medicalConditionScrollPane = new javax.swing.JScrollPane();
+        medicalConditionTextArea = new javax.swing.JTextArea();
+        ecgPanel = new javax.swing.JPanel();
+        ecgTitleLabel = new javax.swing.JLabel();
+        ecgValueLabel = new javax.swing.JLabel();
+        gluPanel = new javax.swing.JPanel();
+        gluTitleLabel = new javax.swing.JLabel();
+        gluValueLabel = new javax.swing.JLabel();
+        currentStatePanel = new javax.swing.JPanel();
+        currentStateTitleLabel = new javax.swing.JLabel();
+        currentStateScrollPane = new javax.swing.JScrollPane();
+        currentStateTextArea = new javax.swing.JTextArea();
+        temperaturePanel = new javax.swing.JPanel();
+        tempTitleLabel = new javax.swing.JLabel();
+        tempValueLabel = new javax.swing.JLabel();
+        nibpPanel = new javax.swing.JPanel();
+        nibpTitleLabel = new javax.swing.JLabel();
+        nibpValueLabel = new javax.swing.JLabel();
 
-		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-		setBackground(new java.awt.Color(0, 0, 0));
-		setMaximumSize(new java.awt.Dimension(640, 480));
-		setMinimumSize(new java.awt.Dimension(640, 480));
-		setResizable(false);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 0, 0));
+        setMaximumSize(new java.awt.Dimension(640, 480));
+        setMinimumSize(new java.awt.Dimension(640, 480));
+        setResizable(false);
 
-		jPanel1.setBackground(java.awt.Color.black);
-		jPanel1.setForeground(new java.awt.Color(255, 255, 255));
-		jPanel1.setMinimumSize(new java.awt.Dimension(640, 480));
-		jPanel1.setPreferredSize(new java.awt.Dimension(640, 480));
+        pmsPanel.setBackground(java.awt.Color.black);
+        pmsPanel.setForeground(new java.awt.Color(255, 255, 255));
+        pmsPanel.setMinimumSize(new java.awt.Dimension(640, 480));
+        pmsPanel.setPreferredSize(new java.awt.Dimension(640, 480));
 
-		jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-		jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 153)));
-		jPanel2.setMinimumSize(new java.awt.Dimension(580, 420));
-		jPanel2.setOpaque(false);
-		jPanel2.setPreferredSize(new java.awt.Dimension(580, 420));
+        pmsInnerPanel.setBackground(new java.awt.Color(255, 255, 255));
+        pmsInnerPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 153)));
+        pmsInnerPanel.setMinimumSize(new java.awt.Dimension(580, 420));
+        pmsInnerPanel.setOpaque(false);
+        pmsInnerPanel.setPreferredSize(new java.awt.Dimension(580, 420));
 
-		jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 102)));
-		jPanel3.setMinimumSize(new java.awt.Dimension(400, 160));
-		jPanel3.setOpaque(false);
-		jPanel3.setPreferredSize(new java.awt.Dimension(400, 300));
+        generalInfoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 102)));
+        generalInfoPanel.setMinimumSize(new java.awt.Dimension(400, 160));
+        generalInfoPanel.setOpaque(false);
+        generalInfoPanel.setPreferredSize(new java.awt.Dimension(400, 300));
 
-		jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-		jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-		jLabel2.setText("Name:");
+        nameTitleLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        nameTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
+        nameTitleLabel.setText("Name:");
 
-		nameLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-		nameLabel.setForeground(new java.awt.Color(255, 255, 255));
-		nameLabel.setText("PatientNumber:");
+        patientNumberTitleLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        patientNumberTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
+        patientNumberTitleLabel.setText("PatientNumber:");
 
-		jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-		jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-		jLabel4.setText("Age:");
+        ageTitleLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        ageTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
+        ageTitleLabel.setText("Age:");
 
-		jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-		jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-		jLabel5.setText("Gender:");
+        genderTitleLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        genderTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
+        genderTitleLabel.setText("Gender:");
 
-		jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-		jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-		jLabel6.setText("Weight:");
+        weightTitleLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        weightTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
+        weightTitleLabel.setText("Weight:");
 
-		jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-		jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-		jLabel7.setText("Height:");
+        heightTitleLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        heightTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
+        heightTitleLabel.setText("Height:");
 
-		jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-		jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-		jLabel8.setText("Specific Medical Condition:");
+        medicalCondtionTitleLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        medicalCondtionTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
+        medicalCondtionTitleLabel.setText("Specific Medical Condition:");
 
-		jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-		jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        nameLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        nameLabel.setForeground(new java.awt.Color(255, 255, 255));
 
-		patientNumberLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-		patientNumberLabel.setForeground(new java.awt.Color(255, 255, 255));
+        patientNumberLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        patientNumberLabel.setForeground(new java.awt.Color(255, 255, 255));
 
-		heightLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-		heightLabel.setForeground(new java.awt.Color(255, 255, 255));
+        heightLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        heightLabel.setForeground(new java.awt.Color(255, 255, 255));
 
-		ageLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-		ageLabel.setForeground(new java.awt.Color(255, 255, 255));
+        ageLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        ageLabel.setForeground(new java.awt.Color(255, 255, 255));
 
-		genderLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-		genderLabel.setForeground(new java.awt.Color(255, 255, 255));
+        genderLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        genderLabel.setForeground(new java.awt.Color(255, 255, 255));
 
-		weightLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-		weightLabel.setForeground(new java.awt.Color(255, 255, 255));
+        weightLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        weightLabel.setForeground(new java.awt.Color(255, 255, 255));
 
-		jScrollPane1.setBackground(new java.awt.Color(0, 0, 0));
-		jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
-		jScrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-		jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		jScrollPane1.setOpaque(false);
+        medicalConditionScrollPane.setBackground(new java.awt.Color(0, 0, 0));
+        medicalConditionScrollPane.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        medicalConditionScrollPane.setForeground(new java.awt.Color(255, 255, 255));
+        medicalConditionScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        medicalConditionScrollPane.setOpaque(false);
 
-		conditionTextArea.setBackground(new java.awt.Color(0, 0, 0));
-		conditionTextArea.setColumns(20);
-		conditionTextArea.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-		conditionTextArea.setForeground(new java.awt.Color(255, 255, 255));
-		conditionTextArea.setRows(5);
-		conditionTextArea.setCaretColor(new java.awt.Color(255, 255, 255));
-		conditionTextArea.setEditable(false);
-		jScrollPane1.setViewportView(conditionTextArea);
+        medicalConditionTextArea.setBackground(new java.awt.Color(0, 0, 0));
+        medicalConditionTextArea.setColumns(20);
+        medicalConditionTextArea.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        medicalConditionTextArea.setForeground(new java.awt.Color(255, 255, 255));
+        medicalConditionTextArea.setRows(5);
+        medicalConditionTextArea.setCaretColor(new java.awt.Color(255, 255, 255));
+        medicalConditionScrollPane.setViewportView(medicalConditionTextArea);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout generalInfoPanelLayout = new javax.swing.GroupLayout(generalInfoPanel);
+        generalInfoPanel.setLayout(generalInfoPanelLayout);
+        generalInfoPanelLayout.setHorizontalGroup(
+            generalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(generalInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
+                .addGroup(generalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(medicalConditionScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalInfoPanelLayout.createSequentialGroup()
+                        .addGroup(generalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(generalInfoPanelLayout.createSequentialGroup()
+                                .addComponent(weightTitleLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(weightLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                            .addGroup(generalInfoPanelLayout.createSequentialGroup()
+                                .addComponent(ageTitleLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(ageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel5))
+                        .addGroup(generalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(heightTitleLabel)
+                            .addComponent(genderTitleLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(generalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(genderLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
                             .addComponent(heightLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(generalInfoPanelLayout.createSequentialGroup()
+                        .addComponent(nameTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(generalInfoPanelLayout.createSequentialGroup()
+                        .addComponent(patientNumberTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(patientNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(generalInfoPanelLayout.createSequentialGroup()
+                        .addComponent(medicalCondtionTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        generalInfoPanelLayout.setVerticalGroup(
+            generalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(generalInfoPanelLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(generalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nameTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(generalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(patientNumberTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(patientNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(generalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(genderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(generalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(ageTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(genderTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(ageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(generalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(generalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(heightTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(weightTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(heightLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(weightLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(medicalCondtionTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                .addComponent(medicalConditionScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 153)));
-        jPanel4.setOpaque(false);
-        jPanel4.setPreferredSize(new java.awt.Dimension(240, 100));
+        ecgPanel.setBorder(javax.swing.BorderFactory.createLineBorder(ECG_COLOR));
+        ecgPanel.setOpaque(false);
+        ecgPanel.setPreferredSize(new java.awt.Dimension(240, 100));
 
-        jLabel18.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel18.setForeground(ECG_COLOR);
-        jLabel18.setText("ECG/Min");
+        ecgTitleLabel.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        ecgTitleLabel.setForeground(ECG_COLOR);
+        ecgTitleLabel.setText("ECG/Min");
 
-        ecgLabel.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
-        ecgLabel.setForeground(ECG_COLOR);
-        ecgLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        ecgValueLabel.setBackground(new java.awt.Color(255, 0, 0));
+        ecgValueLabel.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
+        ecgValueLabel.setForeground(ECG_COLOR);
+        ecgValueLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout ecgPanelLayout = new javax.swing.GroupLayout(ecgPanel);
+        ecgPanel.setLayout(ecgPanelLayout);
+        ecgPanelLayout.setHorizontalGroup(
+            ecgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ecgPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel18)
+                .addGroup(ecgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ecgPanelLayout.createSequentialGroup()
+                        .addComponent(ecgTitleLabel)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(ecgLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(ecgValueLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        ecgPanelLayout.setVerticalGroup(
+            ecgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ecgPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ecgTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ecgLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                .addComponent(ecgValueLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 153)));
-        jPanel5.setOpaque(false);
-        jPanel5.setPreferredSize(new java.awt.Dimension(240, 100));
+        gluPanel.setBorder(javax.swing.BorderFactory.createLineBorder(GLU_COLOR));
+        gluPanel.setOpaque(false);
+        gluPanel.setPreferredSize(new java.awt.Dimension(240, 100));
 
-        jLabel22.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel22.setForeground(GLU_COLOR);
-        jLabel22.setText("GLU/mM");
+        gluTitleLabel.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        gluTitleLabel.setForeground(GLU_COLOR);
+        gluTitleLabel.setText("GLU/mM");
 
-        gluLabel.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
-        gluLabel.setForeground(GLU_COLOR);
-        gluLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        gluValueLabel.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
+        gluValueLabel.setForeground(GLU_COLOR);
+        gluValueLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout gluPanelLayout = new javax.swing.GroupLayout(gluPanel);
+        gluPanel.setLayout(gluPanelLayout);
+        gluPanelLayout.setHorizontalGroup(
+            gluPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(gluPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel22)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(gluLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
+                .addGroup(gluPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(gluPanelLayout.createSequentialGroup()
+                        .addComponent(gluTitleLabel)
+                        .addGap(0, 115, Short.MAX_VALUE))
+                    .addComponent(gluValueLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        gluPanelLayout.setVerticalGroup(
+            gluPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(gluPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(gluTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(gluLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(gluValueLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(6, 6, 6))
         );
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 153)));
-        jPanel6.setOpaque(false);
+        currentStatePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 153)));
+        currentStatePanel.setOpaque(false);
 
-        jLabel15.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("Current State:");
+        currentStateTitleLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        currentStateTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
+        currentStateTitleLabel.setText("Current State:");
 
-        jScrollPane2.setForeground(new java.awt.Color(255, 255, 255));
-	jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane2.setOpaque(false);
+        currentStateScrollPane.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        currentStateScrollPane.setForeground(new java.awt.Color(255, 255, 255));
+        currentStateScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        currentStateScrollPane.setOpaque(false);
 
-        stateTextArea.setBackground(new java.awt.Color(0, 0, 0));
-        stateTextArea.setColumns(20);
-        stateTextArea.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        stateTextArea.setForeground(new java.awt.Color(255, 255, 255));
-        stateTextArea.setLineWrap(true);
-        stateTextArea.setRows(3);
-        stateTextArea.setCaretColor(new java.awt.Color(255, 255, 255));
-	stateTextArea.setEditable(false);
-        jScrollPane2.setViewportView(stateTextArea);
+        currentStateTextArea.setBackground(new java.awt.Color(0, 0, 0));
+        currentStateTextArea.setColumns(20);
+        currentStateTextArea.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        currentStateTextArea.setForeground(new java.awt.Color(255, 255, 255));
+        currentStateTextArea.setLineWrap(true);
+        currentStateTextArea.setRows(3);
+        currentStateTextArea.setCaretColor(new java.awt.Color(255, 255, 255));
+        currentStateScrollPane.setViewportView(currentStateTextArea);
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        javax.swing.GroupLayout currentStatePanelLayout = new javax.swing.GroupLayout(currentStatePanel);
+        currentStatePanel.setLayout(currentStatePanelLayout);
+        currentStatePanelLayout.setHorizontalGroup(
+            currentStatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(currentStatePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel15)
-                        .addGap(0, 280, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2))
-                .addContainerGap())
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2)
-                .addContainerGap())
-        );
-
-        jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 153)));
-        jPanel7.setOpaque(false);
-        jPanel7.setPreferredSize(new java.awt.Dimension(240, 120));
-
-        jLabel24.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel24.setForeground(TEMP_COLOR);
-        jLabel24.setText("TEMP/Celsius");
-
-        tempLabel.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
-        tempLabel.setForeground(TEMP_COLOR);
-        tempLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jLabel24)
+                .addGroup(currentStatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(currentStatePanelLayout.createSequentialGroup()
+                        .addComponent(currentStateTitleLabel)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(tempLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
+                    .addComponent(currentStateScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        currentStatePanelLayout.setVerticalGroup(
+            currentStatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(currentStatePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(currentStateTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(currentStateScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        temperaturePanel.setBorder(javax.swing.BorderFactory.createLineBorder(TEMP_COLOR));
+        temperaturePanel.setOpaque(false);
+        temperaturePanel.setPreferredSize(new java.awt.Dimension(240, 120));
+
+        tempTitleLabel.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        tempTitleLabel.setForeground(TEMP_COLOR);
+        tempTitleLabel.setText("TEMP/Celsius");
+
+        tempValueLabel.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
+        tempValueLabel.setForeground(TEMP_COLOR);
+        tempValueLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+
+        javax.swing.GroupLayout temperaturePanelLayout = new javax.swing.GroupLayout(temperaturePanel);
+        temperaturePanel.setLayout(temperaturePanelLayout);
+        temperaturePanelLayout.setHorizontalGroup(
+            temperaturePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(temperaturePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(temperaturePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(temperaturePanelLayout.createSequentialGroup()
+                        .addComponent(tempTitleLabel)
+                        .addGap(0, 70, Short.MAX_VALUE))
+                    .addComponent(tempValueLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        temperaturePanelLayout.setVerticalGroup(
+            temperaturePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(temperaturePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tempTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
-                .addComponent(tempLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+                .addComponent(tempValueLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 153)));
-        jPanel8.setOpaque(false);
-        jPanel8.setPreferredSize(new java.awt.Dimension(240, 100));
+        nibpPanel.setBorder(javax.swing.BorderFactory.createLineBorder(NIBP_COLOR));
+        nibpPanel.setOpaque(false);
+        nibpPanel.setPreferredSize(new java.awt.Dimension(240, 100));
 
-        jLabel20.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel20.setForeground(NIBP_COLOR);
-        jLabel20.setText("NIBP/mmHg");
+        nibpTitleLabel.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        nibpTitleLabel.setForeground(NIBP_COLOR);
+        nibpTitleLabel.setText("NIBP/mmHg");
 
-        nibpLabel.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
-        nibpLabel.setForeground(NIBP_COLOR);
-        nibpLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        nibpValueLabel.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
+        nibpValueLabel.setForeground(NIBP_COLOR);
+        nibpValueLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+        javax.swing.GroupLayout nibpPanelLayout = new javax.swing.GroupLayout(nibpPanel);
+        nibpPanel.setLayout(nibpPanelLayout);
+        nibpPanelLayout.setHorizontalGroup(
+            nibpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(nibpPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jLabel20)
+                .addGroup(nibpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(nibpPanelLayout.createSequentialGroup()
+                        .addComponent(nibpTitleLabel)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(nibpLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
+                    .addComponent(nibpValueLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+        nibpPanelLayout.setVerticalGroup(
+            nibpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(nibpPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nibpTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nibpLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                .addComponent(nibpValueLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        javax.swing.GroupLayout pmsInnerPanelLayout = new javax.swing.GroupLayout(pmsInnerPanel);
+        pmsInnerPanel.setLayout(pmsInnerPanelLayout);
+        pmsInnerPanelLayout.setHorizontalGroup(
+            pmsInnerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pmsInnerPanelLayout.createSequentialGroup()
+                .addGroup(pmsInnerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(generalInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(currentStatePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)))
+                .addGroup(pmsInnerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(gluPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                    .addComponent(ecgPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                    .addComponent(nibpPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                    .addComponent(temperaturePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        pmsInnerPanelLayout.setVerticalGroup(
+            pmsInnerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pmsInnerPanelLayout.createSequentialGroup()
+                .addGroup(pmsInnerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pmsInnerPanelLayout.createSequentialGroup()
+                        .addComponent(ecgPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nibpPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(gluPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
+                    .addComponent(generalInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)))
+                .addGroup(pmsInnerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(currentStatePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(temperaturePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pmsPanelLayout = new javax.swing.GroupLayout(pmsPanel);
+        pmsPanel.setLayout(pmsPanelLayout);
+        pmsPanelLayout.setHorizontalGroup(
+            pmsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pmsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
+                .addComponent(pmsInnerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pmsPanelLayout.setVerticalGroup(
+            pmsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pmsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addComponent(pmsInnerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pmsPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pmsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 	
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
@@ -515,50 +520,50 @@ public class PMSGUI extends JFrame implements Display {
 
 	@Override
 	public void displayHeartRate(int heartRate, boolean warning) {
-		ecgLabel.setText(Integer.toString(heartRate));
+		ecgValueLabel.setText(Integer.toString(heartRate));
 		if(warning) {
-			jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(Color.RED, 5));
+			ecgPanel.setBorder(javax.swing.BorderFactory.createLineBorder(WARNING_COLOR, 5));
 		}
 		else {
-			jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(0, 255, 51)));
+			ecgPanel.setBorder(javax.swing.BorderFactory.createLineBorder(ECG_COLOR));
 		}
 	}
 
 	@Override
 	public void displayTemperature(int temperature, boolean warning) {
-		tempLabel.setText(Integer.toString(temperature));
+		tempValueLabel.setText(Integer.toString(temperature));
 		if(warning) {
-			jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(Color.RED, 5));
+			temperaturePanel.setBorder(javax.swing.BorderFactory.createLineBorder(WARNING_COLOR, 5));
 		}
 		else {
-			jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(255, 153, 51)));
+			temperaturePanel.setBorder(javax.swing.BorderFactory.createLineBorder(TEMP_COLOR));
 		}
 	}
 
 	@Override
 	public void displayBloodPressure(int highPressure,int lowPressure, boolean warning) {
-		nibpLabel.setText(Integer.toString(highPressure) + "/" + Integer.toString(lowPressure));
+		nibpValueLabel.setText(Integer.toString(highPressure) + "/" + Integer.toString(lowPressure));
 		if(warning) {
-			jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(Color.RED, 5));
+			nibpPanel.setBorder(javax.swing.BorderFactory.createLineBorder(WARNING_COLOR, 5));
 		}
 		else {
-			jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(0, 153, 255)));
+			nibpPanel.setBorder(javax.swing.BorderFactory.createLineBorder(NIBP_COLOR));
 		}
 	}
 
 	@Override
 	public void displayBloodGlucoseLevel(int bloodGlucoseLevel, boolean warning) {
-		gluLabel.setText(Integer.toString(bloodGlucoseLevel));
+		gluValueLabel.setText(Integer.toString(bloodGlucoseLevel));
 		if(warning) {
-			jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(Color.RED, 5));
+			gluPanel.setBorder(javax.swing.BorderFactory.createLineBorder(WARNING_COLOR, 5));
 		}
 		else {
-			jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(255, 255, 0)));
+			gluPanel.setBorder(javax.swing.BorderFactory.createLineBorder(GLU_COLOR));
 		}
 	}
 
 	@Override
 	public void displayInfo(String stateInfo) {
-		stateTextArea.setText(stateInfo);
+		currentStateTextArea.setText(stateInfo);
 	}
 }

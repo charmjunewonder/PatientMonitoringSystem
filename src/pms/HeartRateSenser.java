@@ -21,7 +21,7 @@ public class HeartRateSenser extends Senser {
 	/**
 	 * Constructs a HeartRateSenser.
 	 */
-	public void HeartRateSenser() {
+	public HeartRateSenser() {
 		rand = new Random(System.currentTimeMillis());
 	}
 	
