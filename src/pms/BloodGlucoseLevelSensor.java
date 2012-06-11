@@ -18,14 +18,14 @@ public class BloodGlucoseLevelSensor extends Senser {
 	public static final double DEAD_HIGH_BLOOD_GLUCOSE_LEVEL = 200.0;
 
 	private Random rand;
-	private double previousBloodGlucoseLevel;
+//	private double previousBloodGlucoseLevel;
 
 	/**
 	 * create an instance of BloodGlucoseLevelSensor
 	 */
 	public BloodGlucoseLevelSensor() {
 		rand = new Random(System.currentTimeMillis());
-		previousBloodGlucoseLevel = 100.0;
+//		previousBloodGlucoseLevel = 100.0;
 	}
 
 	/**
@@ -40,13 +40,11 @@ public class BloodGlucoseLevelSensor extends Senser {
 		if (exceptionRandom == 0)
 			throw new BloodGlucoseLevelNoSignalException();
 //		double curGlucose = previousBloodGlucoseLevel + (rand.nextInt() % 10);
-		double curGlucose = (rand.nextDouble() - 0.5) * 200 + 100;
-		if (curGlucose < DEAD_LOW_BLOOD_GLUCOSE_LEVEL)
-			curGlucose += 5;
-		else if (curGlucose > DEAD_HIGH_BLOOD_GLUCOSE_LEVEL)
-			curGlucose -= 5;
-		previousBloodGlucoseLevel = curGlucose;
-		return curGlucose;
+//		double curGlucose = rand.nextDouble() * 200 + DEAD_LOW_BLOOD_GLUCOSE_LEVEL;
+//		if (curGlucose < DEAD_LOW_BLOOD_GLUCOSE_LEVEL) curGlucose += 5;
+//		else if (curGlucose > DEAD_HIGH_BLOOD_GLUCOSE_LEVEL) curGlucose -= 5;
+//		previousBloodGlucoseLevel = curGlucose;
+		return rand.nextDouble() * 200 + DEAD_LOW_BLOOD_GLUCOSE_LEVEL;
 	}
 
 	/**
