@@ -1,8 +1,5 @@
 package pms;
 public class Patient {
-	public enum Gender {
-		MALE, FEMALE
-	}
 
 	private String name;
 	private String address;
@@ -148,6 +145,7 @@ public class Patient {
 		this.specificCondition = specificCondition;
 	}
 
+	@Override
 	public String toString(){
 		return 	"Patient" +
 				"\nName: \t" + name +
@@ -159,5 +157,21 @@ public class Patient {
 				"\nHeight: \t" + height +
 				"\nSpecific Condition: \t" + specificCondition +
 				"\n";
+	}
+	
+	public enum Gender {
+		MALE("Male"),
+		FEMALE("Female");
+		
+		private String gender;
+		
+		private Gender(String gender) {
+			this.gender = gender;
+		}
+		
+		@Override
+		public String toString() {
+			return gender;
+		}
 	}
 }

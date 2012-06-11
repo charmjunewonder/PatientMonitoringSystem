@@ -44,4 +44,13 @@ public class VitalSignLogger {
 	public void addRecord(String data) {
 		out.println(data);
 	}
+	
+	/**
+	 * Destructs this object.
+	 */
+	@Override
+	public void finalize() throws Throwable {
+		out.close();
+		super.finalize();
+	}
 }

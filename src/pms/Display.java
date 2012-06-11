@@ -13,7 +13,7 @@ public interface Display {
 	 * @param hearRete
 	 * @param warning
 	 */
-	public void displayHeartRate(int heartRete, boolean warning);
+	public void displayHeartRate(int heartRate, boolean warning);
 
 	/**
 	 * @param temperature
@@ -25,7 +25,7 @@ public interface Display {
 	 * @param pressure
 	 * @param warning
 	 */
-	public void displayBloodPressure(int pressure, boolean warning);
+	public void displayBloodPressure(int highPressure, int lowPressure, boolean warning);
 
 	/**
 	 * @param bloodGlucoseLevel
