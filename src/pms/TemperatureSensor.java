@@ -6,6 +6,8 @@ package pms;
 
 import java.util.Random;
 
+import pms.BloodGlucoseLevelSensor.BloodClucoseLevelNoSignalException;
+
 /**
  *
  * @author charmjunewonder
@@ -25,7 +27,9 @@ public class TemperatureSensor extends Senser{
 		previousTemperature = 37.0;
 	}
 
-	public double getTemperature(){
+	public double getTemperature() throws TemperatureNoSignalException{
+		int exceptionRandom = rand.nextInt(10);
+		if(exceptionRandom == 0) throw new TemperatureNoSignalException();
 		double curTemp = previousTemperature + (rand.nextInt() % 10)* 0.005;
 		if(curTemp < DEAD_LOW_TEMPERATURE) curTemp += 0.10;
 		else if(curTemp > DEAD_HIGH_TEMPERATURE) curTemp -= 0.10;
