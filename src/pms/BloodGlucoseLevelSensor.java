@@ -12,17 +12,25 @@ import java.util.Random;
  */
 public class BloodGlucoseLevelSensor  extends Senser{
 	
-	public static final double NORMAL_HIGH_BLOOD_GLUCOSE_LEVEL = 104.4;
+	public static final double NORMAL_HIGH_BLOOD_GLUCOSE_LEVEL = 180.0;
 	public static final double NORMAL_LOW_BLOOD_GLUCOSE_LEVEL = 64.8;
-
+	public static final double DEAD_LOW_BLOOD_GLUCOSE_LEVEL = 15.0;
+	public static final double DEAD_HIGH_BLOOD_GLUCOSE_LEVEL = 200.0;
+	
 	private Random rand;
+	private double previousBloodGlucoseLevel;
 
 	public BloodGlucoseLevelSensor(){
 		rand = new Random(System.currentTimeMillis());
+		previousBloodGlucoseLevel = 100.0;
 	}
 
 	public double getGlucoseLevel(){
-		return BloodGlucoseLevelSensor.NORMAL_HIGH_BLOOD_GLUCOSE_LEVEL;	
+		double curGlucose = previousBloodGlucoseLevel + (rand.nextInt() % 10);
+		if(curGlucose < DEAD_LOW_BLOOD_GLUCOSE_LEVEL) curGlucose += 0.10;
+		else if(curGlucose > DEAD_HIGH_BLOOD_GLUCOSE_LEVEL) curGlucose -= 0.10;
+		previousBloodGlucoseLevel = curGlucose;
+		return curGlucose;
 	}
 
 	public class BloodClucoseLevelNoSignalException extends NoSignalException{
