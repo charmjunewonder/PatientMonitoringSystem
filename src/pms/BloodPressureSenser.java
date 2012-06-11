@@ -2,6 +2,8 @@ package pms;
 
 import java.util.Random;
 
+import pms.HeartRateSenser.HeartRateSenserNoSignalException;
+
 /**
  * Simulates a senser measuring blood pressure from one patient.
  * 
@@ -31,9 +33,9 @@ public class BloodPressureSenser extends Senser {
 	 * @exception BloodPressureSenserNoSignalException when the blood pressure senser failed
 	 */
 	public double getHighPressure() {
-		return rand.nextDouble()
-			* (NORMAL_HIGH_PRESSURE_UP - NORMAL_HIGH_PRESSURE_DOWN)
-			+ NORMAL_HIGH_PRESSURE_DOWN;
+		int exceptionRandom = rand.nextInt(10);
+		if(exceptionRandom == 0) throw new BloodPressureNoSignalException();
+		return rand.nextDouble() * 20 + 110;
 	}
 	
 	/**
@@ -43,9 +45,9 @@ public class BloodPressureSenser extends Senser {
 	 * @exception BloodPressureSenserNoSignalException when the blood pressure senser failed.
 	 */
 	public double getLowPressure() {
-		return rand.nextDouble()
-			* (NORMAL_LOW_PRESSURE_UP - NORMAL_LOW_PRESSURE_DOWN)
-			+ NORMAL_LOW_PRESSURE_DOWN;
+		int exceptionRandom = rand.nextInt(10);
+		if(exceptionRandom == 0) throw new BloodPressureNoSignalException();
+		return rand.nextDouble() * 20 + 50;
 	}
 	
 	/**

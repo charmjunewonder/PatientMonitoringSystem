@@ -2,6 +2,8 @@ package pms;
 
 import java.util.Random;
 
+import pms.TemperatureSensor.TemperatureNoSignalException;
+
 /**
  * Simulates a senser measuring heart rate from one patient.
  * Heart rate is generated randomly.
@@ -31,10 +33,10 @@ public class HeartRateSenser extends Senser {
 	 * @return the heart rate of the patient
 	 * @exception HeartRateSenserNoSignalException when this heart rate senser failed.
 	 */
-	public double getBeats() {
-		return rand.nextDouble()
-			* (NORMAL_HIGH_BEATS - NORMAL_LOW_BEATS)
-			+ NORMAL_LOW_BEATS;
+	public double getBeats() throws HeartRateSenserNoSignalException{
+		int exceptionRandom = rand.nextInt(10);
+		if(exceptionRandom == 0) throw new HeartRateSenserNoSignalException();
+		return rand.nextDouble() * 80 + MIN_HEARTBEATS;
 	}
 	
 	/**
