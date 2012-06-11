@@ -87,6 +87,7 @@ public class Monitor {
 				if (glucoseOutOfLifeLimit && pressureOutOfLifeLimit
 						&& temperatureOutOfLifeLimit && rateOutOfLifeLimit) {
 					intravenousInputMachine.activate();
+					view.displayInfo("The patient is injected.");
 				}
 			}
 		};
@@ -95,8 +96,12 @@ public class Monitor {
 
 	public void processHeartRate() {
 		try {
-			int rate = (int) heartRateSensor.getBeats();
-			view.displayHeartRate(rate, false);
+			double rate = heartRateSensor.getBeats();
+			boolean warning = false;
+			if (rate > HeartRateSenser.NORMAL_HIGH_BEATS
+					|| rate < HeartRateSenser.NORMAL_LOW_BEATS)
+				warning = true;
+			view.displayHeartRate(rate, warning);
 		} catch (HeartRateSenserNoSignalException hrsnse) {
 			view.displayHeartRate(0, true);
 		}
@@ -105,11 +110,17 @@ public class Monitor {
 
 	public void processBloodPressure() {
 		try {
-			int highPressure = (int) bloodPressureSensor.getHighPressure();
-			int lowPressure = (int) bloodPressureSensor.getLowPressure();
-			view.displayBloodPressure(highPressure, lowPressure, false);
+			double highPressure = bloodPressureSensor.getHighPressure();
+			double lowPressure = bloodPressureSensor.getLowPressure();
+			boolean warning = false;
+			if (highPressure > BloodPressureSenser.NORMAL_HIGH_PRESSURE_UP
+					|| highPressure < BloodPressureSenser.NORMAL_HIGH_PRESSURE_DOWN
+					|| lowPressure > BloodPressureSenser.NORMAL_LOW_PRESSURE_UP
+					|| lowPressure < BloodPressureSenser.NORMAL_LOW_PRESSURE_DOWN)
+				warning = true;
+			view.displayBloodPressure(highPressure, lowPressure, warning);
 		} catch (BloodPressureNoSignalException e) {
-			view.displayBloodPressure(0, 0, true);
+			//TODO view.displayBloodPressure(0, 0, true);
 		}
 
 		view.repaint();
@@ -117,10 +128,14 @@ public class Monitor {
 
 	public void processBloodGlucoseLevel() {
 		try {
-			int glucose = (int) bloodGlucoseLevelSensor.getGlucoseLevel();
-			view.displayBloodGlucoseLevel(glucose, false);
+			double glucose = bloodGlucoseLevelSensor.getGlucoseLevel();
+			boolean warning = false;
+			if (glucose > BloodGlucoseLevelSensor.NORMAL_HIGH_BLOOD_GLUCOSE_LEVEL
+					|| glucose < BloodGlucoseLevelSensor.NORMAL_LOW_BLOOD_GLUCOSE_LEVEL)
+				warning = true;
+			view.displayBloodGlucoseLevel(glucose, warning);
 		} catch (BloodClucoseLevelNoSignalException e) {
-			view.displayBloodGlucoseLevel(0, true);
+			//TODO view.displayBloodGlucoseLevel(0, true);
 		}
 
 		view.repaint();
@@ -128,10 +143,14 @@ public class Monitor {
 
 	public void processTemperature() {
 		try {
-			int temp = (int) temperatureSensor.getTemperature();
-			view.displayTemperature(temp, false);
+			double temp = temperatureSensor.getTemperature();
+			boolean warning = false;
+			if (temp > TemperatureSensor.NORMAL_HIGH_TEMPERATURE
+					|| temp < TemperatureSensor.NORMAL_LOW_TEMPERATURE)
+				warning = true;
+			view.displayTemperature(temp, warning);
 		} catch (TemperatureNoSignalException e) {
-			view.displayTemperature(0, true);
+			//view.displayTemperature(0, true);
 		}
 
 		view.repaint();
