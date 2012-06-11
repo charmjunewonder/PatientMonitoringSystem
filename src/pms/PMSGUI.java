@@ -1,6 +1,8 @@
 package pms;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.*;
 
 /**
@@ -495,6 +497,12 @@ public class PMSGUI extends JFrame implements Display {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+	
+		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+		int X = (screen.width / 2) - (getWidth() / 2); // Center horizontally.
+		int Y = (screen.height / 2) - (getHeight() / 2); // Center vertically.
+
+		setLocation(X, Y);
 
         pack();
 	}

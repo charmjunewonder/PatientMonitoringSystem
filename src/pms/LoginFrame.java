@@ -141,6 +141,7 @@ public class LoginFrame extends JFrame{
 
 		genderButtonGroup.add(maleRadioButton);
 		maleRadioButton.setText("Male");
+		maleRadioButton.setSelected(true);
 
 		jPanel1.add(maleRadioButton);
 		maleRadioButton.setBounds(240, 170, 60, 23);
