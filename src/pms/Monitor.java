@@ -6,14 +6,14 @@ import java.awt.event.ActionListener;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
-import pms.BloodGlucoseLevelSensor.BloodClucoseLevelNoSignalException;
+import pms.BloodGlucoseLevelSensor.BloodGlucoseLevelNoSignalException;
 import pms.BloodPressureSenser.BloodPressureNoSignalException;
 import pms.HeartRateSenser.HeartRateSenserNoSignalException;
 import pms.Patient.Gender;
 import pms.TemperatureSensor.TemperatureNoSignalException;
 
 /**
- * @author charmjunewonder
+ * @author Eric
  * 
  */
 public class Monitor {
@@ -37,6 +37,7 @@ public class Monitor {
 	private boolean rateOutOfLifeLimit;
 
 	/**
+	 * create an instance of monitor
 	 * @param patient
 	 */
 	public Monitor(Patient patient) {
@@ -51,9 +52,11 @@ public class Monitor {
 	}
 
 	/**
-	 * 
+	 * let the monitor start to work
 	 */
 	public void start() {
+		
+		// get temperature value from the sensor and display them
 		ActionListener temperatureAction = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				processTemperature();
@@ -61,6 +64,7 @@ public class Monitor {
 		};
 		new Timer(TEMPERATURE_TIME, temperatureAction).start();
 
+		// get blood pressure value from the sensor and display them
 		ActionListener pressureAction = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				processBloodPressure();
@@ -68,6 +72,7 @@ public class Monitor {
 		};
 		new Timer(BLOOD_PRESSURE_TIME, pressureAction).start();
 
+		// get blood glucose level value from the sensor and display them
 		ActionListener glucoseAction = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				processBloodGlucoseLevel();
@@ -75,6 +80,7 @@ public class Monitor {
 		};
 		new Timer(BLOOD_GLUCOSE_LEVEL_TIME, glucoseAction).start();
 
+		// get heart rate value from the sensor and display them
 		ActionListener heartAction = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				processHeartRate();
@@ -82,6 +88,7 @@ public class Monitor {
 		};
 		new Timer(HEART_RATE_TIME, heartAction).start();
 
+		// check if four value is out of life limit or not.
 		ActionListener intravenousInputAction = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (glucoseOutOfLifeLimit && pressureOutOfLifeLimit
@@ -94,6 +101,9 @@ public class Monitor {
 		new Timer(100, intravenousInputAction).start();
 	}
 
+	/**
+	 * process the heart rate and display it.
+	 */
 	public void processHeartRate() {
 		try {
 			double rate = heartRateSensor.getBeats();
@@ -108,6 +118,9 @@ public class Monitor {
 		view.repaint();
 	}
 
+	/**
+	 * process the blood pressure and display it.
+	 */
 	public void processBloodPressure() {
 		try {
 			double highPressure = bloodPressureSensor.getHighPressure();
@@ -126,6 +139,9 @@ public class Monitor {
 		view.repaint();
 	}
 
+	/**
+	 * process the blood glucose level and display it.
+	 */
 	public void processBloodGlucoseLevel() {
 		try {
 			double glucose = bloodGlucoseLevelSensor.getGlucoseLevel();
@@ -134,13 +150,16 @@ public class Monitor {
 					|| glucose < BloodGlucoseLevelSensor.NORMAL_LOW_BLOOD_GLUCOSE_LEVEL)
 				warning = true;
 			view.displayBloodGlucoseLevel(glucose, warning);
-		} catch (BloodClucoseLevelNoSignalException e) {
+		} catch (BloodGlucoseLevelNoSignalException e) {
 			//TODO view.displayBloodGlucoseLevel(0, true);
 		}
 
 		view.repaint();
 	}
 
+	/**
+	 * process the temperature and display it.
+	 */
 	public void processTemperature() {
 		try {
 			double temp = temperatureSensor.getTemperature();

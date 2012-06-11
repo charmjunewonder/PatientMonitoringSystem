@@ -145,6 +145,9 @@ public class Patient {
 		this.specificCondition = specificCondition;
 	}
 
+	/** 
+	 * return the description of the patient
+	 */
 	@Override
 	public String toString(){
 		return 	"Patient" +
@@ -159,6 +162,10 @@ public class Patient {
 				"\n";
 	}
 	
+	/**
+	 * enum to indicate the gender of the patient
+	 * @author Eric
+	 */
 	public enum Gender {
 		MALE("Male"),
 		FEMALE("Female");

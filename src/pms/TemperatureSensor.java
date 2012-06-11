@@ -6,8 +6,6 @@ package pms;
 
 import java.util.Random;
 
-import pms.BloodGlucoseLevelSensor.BloodClucoseLevelNoSignalException;
-
 /**
  *
  * @author charmjunewonder
@@ -22,11 +20,20 @@ public class TemperatureSensor extends Senser{
 	private double previousTemperature;
 	private Random rand;
 
+	/**
+	 * create an instance of TemperatureSensor
+	 */
 	public TemperatureSensor(){
 		rand = new Random(System.currentTimeMillis());
 		previousTemperature = 37.0;
 	}
 
+	/**
+	 * get the current temperature of the patient
+	 * 
+	 * @return current temperature of the patient.
+	 * @throws TemperatureNoSignalException when the temperature sensor is failed
+	 */
 	public double getTemperature() throws TemperatureNoSignalException{
 		int exceptionRandom = rand.nextInt(10);
 		if(exceptionRandom == 0) throw new TemperatureNoSignalException();
@@ -37,11 +44,22 @@ public class TemperatureSensor extends Senser{
 		return curTemp;
 	}
 
+	/**
+	 * Exception class indicating the temperature sensor is failed
+	 * @author Eric
+	 */
 	public class TemperatureNoSignalException extends NoSignalException{
+		/**
+		 * create an instance of TemperatureNoSignalException
+		 */
 		public TemperatureNoSignalException(){
 			super();
 		}
 
+		/**
+		 * create an instance of TemperatureNoSignalException
+		 * @param message error message
+		 */
 		public TemperatureNoSignalException(String message){
 			super(message);
 		}
