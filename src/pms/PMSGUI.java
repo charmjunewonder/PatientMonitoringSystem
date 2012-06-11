@@ -311,7 +311,7 @@ public class PMSGUI extends JFrame implements Display {
 
         gluTitleLabel.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         gluTitleLabel.setForeground(GLU_COLOR);
-        gluTitleLabel.setText("GLU/mM");
+        gluTitleLabel.setText("GLU/mg");
 
         gluValueLabel.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
         gluValueLabel.setForeground(GLU_COLOR);
@@ -525,6 +525,12 @@ public class PMSGUI extends JFrame implements Display {
         pack();
 	}
 
+	/**
+	 * Display current heart rate.
+	 * 
+	 * @param heartRate Pulse rates every minute
+	 * @param warning if warning need to be displayed for unnormal heartbeat
+	 */
 	@Override
 	public void displayHeartRate(double heartRate, boolean warning) {
 		ecgValueLabel.setText(Integer.toString((int)heartRate));
@@ -540,6 +546,12 @@ public class PMSGUI extends JFrame implements Display {
 		}
 	}
 
+	/**
+	 * Display current body temperature.
+	 * 
+	 * @param temperature body temperature in centigrade
+	 * @param warning if warning need to be displayed for deviant temperature
+	 */
 	@Override
 	public void displayTemperature(double temperature, boolean warning) {
 		tempValueLabel.setText((String.format("%.1f", temperature)));
@@ -555,6 +567,13 @@ public class PMSGUI extends JFrame implements Display {
 		}
 	}
 
+	/**
+	 * Display current blood pressure.
+	 * 
+	 * @param highPressure high blood pressure
+	 * @param lowPressure low blood pressure
+	 * @param warning is warning needed
+	 */
 	@Override
 	public void displayBloodPressure(double highPressure, double lowPressure, boolean warning) {
 		nibpValueLabel.setText(Integer.toString((int)highPressure) + "/" + Integer.toString((int)lowPressure));
@@ -570,6 +589,12 @@ public class PMSGUI extends JFrame implements Display {
 		}
 	}
 
+	/**
+	 * Display current blood glucose level.
+	 * 
+	 * @param bloodGlucoseLevel blood glucose level in milligrams/deciliter
+	 * @param warning if warning needed
+	 */
 	@Override
 	public void displayBloodGlucoseLevel(double bloodGlucoseLevel, boolean warning) {
 		gluValueLabel.setText((String.format("%.1f", bloodGlucoseLevel)));
@@ -585,6 +610,11 @@ public class PMSGUI extends JFrame implements Display {
 		}
 	}
 
+	/**
+	 * Display current state information.
+	 * 
+	 * @param stateInfo state information
+	 */
 	@Override
 	public void displayInfo(String stateInfo) {
 		currentStateTextArea.setText(stateInfo);

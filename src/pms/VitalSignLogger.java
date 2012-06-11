@@ -42,7 +42,9 @@ public class VitalSignLogger {
 	 * @param data record of patient's information.
 	 */
 	public void addRecord(String data) {
-		out.println(data);
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Calendar cal = Calendar.getInstance();
+		out.println(dateFormat.format(cal.getTime()).toString() + "--" + data);
 	}
 	
 	/**
