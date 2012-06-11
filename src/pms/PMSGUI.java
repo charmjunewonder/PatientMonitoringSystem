@@ -519,8 +519,8 @@ public class PMSGUI extends JFrame implements Display {
 	}
 
 	@Override
-	public void displayHeartRate(int heartRate, boolean warning) {
-		ecgValueLabel.setText(Integer.toString(heartRate));
+	public void displayHeartRate(double heartRate, boolean warning) {
+		ecgValueLabel.setText(Integer.toString((int)heartRate));
 		if(warning) {
 			ecgPanel.setBorder(javax.swing.BorderFactory.createLineBorder(WARNING_COLOR, 5));
 		}
@@ -530,8 +530,8 @@ public class PMSGUI extends JFrame implements Display {
 	}
 
 	@Override
-	public void displayTemperature(int temperature, boolean warning) {
-		tempValueLabel.setText(Integer.toString(temperature));
+	public void displayTemperature(double temperature, boolean warning) {
+		tempValueLabel.setText(Integer.toString((int)temperature));
 		if(warning) {
 			temperaturePanel.setBorder(javax.swing.BorderFactory.createLineBorder(WARNING_COLOR, 5));
 		}
@@ -541,8 +541,8 @@ public class PMSGUI extends JFrame implements Display {
 	}
 
 	@Override
-	public void displayBloodPressure(int highPressure,int lowPressure, boolean warning) {
-		nibpValueLabel.setText(Integer.toString(highPressure) + "/" + Integer.toString(lowPressure));
+	public void displayBloodPressure(double highPressure, double lowPressure, boolean warning) {
+		nibpValueLabel.setText(Integer.toString((int)highPressure) + "/" + Integer.toString((int)lowPressure));
 		if(warning) {
 			nibpPanel.setBorder(javax.swing.BorderFactory.createLineBorder(WARNING_COLOR, 5));
 		}
@@ -552,8 +552,8 @@ public class PMSGUI extends JFrame implements Display {
 	}
 
 	@Override
-	public void displayBloodGlucoseLevel(int bloodGlucoseLevel, boolean warning) {
-		gluValueLabel.setText(Integer.toString(bloodGlucoseLevel));
+	public void displayBloodGlucoseLevel(double bloodGlucoseLevel, boolean warning) {
+		gluValueLabel.setText(Integer.toString((int)bloodGlucoseLevel));
 		if(warning) {
 			gluPanel.setBorder(javax.swing.BorderFactory.createLineBorder(WARNING_COLOR, 5));
 		}

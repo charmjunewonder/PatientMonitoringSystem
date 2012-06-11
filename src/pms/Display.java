@@ -13,25 +13,25 @@ public interface Display {
 	 * @param hearRete
 	 * @param warning
 	 */
-	public void displayHeartRate(int heartRate, boolean warning);
+	public void displayHeartRate(double heartRate, boolean warning);
 
 	/**
 	 * @param temperature
 	 * @param warning
 	 */
-	public void displayTemperature(int temperature, boolean warning);
+	public void displayTemperature(double temperature, boolean warning);
 
 	/**
 	 * @param pressure
 	 * @param warning
 	 */
-	public void displayBloodPressure(int highPressure, int lowPressure, boolean warning);
+	public void displayBloodPressure(double highPressure, double lowPressure, boolean warning);
 
 	/**
 	 * @param bloodGlucoseLevel
 	 * @param warning
 	 */
-	public void displayBloodGlucoseLevel(int bloodGlucoseLevel, boolean warning);
+	public void displayBloodGlucoseLevel(double bloodGlucoseLevel, boolean warning);
 
 	/**
 	 * @param stateInfo
