@@ -1,8 +1,13 @@
 package pms;
 
 import java.awt.Dimension;
+import java.awt.Frame;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.text.NumberFormat;
 import javax.swing.*;
 import javax.swing.event.DocumentListener;
 import pms.PatientInfo.Gender;
@@ -33,11 +38,13 @@ public class LoginFrame extends JFrame{
 	private JButton okButton;
 	private JLabel patientNumberLabel;
 	private JTextField patientNumberTextField;
+	private JButton safeLimitsButton;
 	private JLabel specificLabel;
 	private JTextArea specificTextArea;
 	private JLabel titleLabel;
 	private JLabel weightLabel;
 	private JTextField weightTextField;
+	private SafeLimitDialog safeLimitsDialog;
 	
 	/**
 	 * Constructs a login Frame.
@@ -73,6 +80,7 @@ public class LoginFrame extends JFrame{
 		femaleRadioButton = new JRadioButton();
 		okButton = new JButton();
 		ageLabel = new JLabel();
+		safeLimitsDialog = new SafeLimitDialog(this, true);
 
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setMinimumSize(new java.awt.Dimension(640, 480));
@@ -239,12 +247,24 @@ public class LoginFrame extends JFrame{
 		return specificTextArea.getText();
 	}
 	
+	public void addSafeLimitsButtonListener(ActionListener actionListener) {
+		safeLimitsButton.addActionListener(actionListener);
+	}
+	
+	public void addSafeLimitsOkButtonListener(ActionListener actionListener) {
+		safeLimitsDialog.okButton.addActionListener(actionListener);
+	}
+	
 	public void addOkButtonActionListener(ActionListener actionListener) {
 		okButton.addActionListener(actionListener);
 	}
 	
 	public void setOkButtonEnabled(boolean enabled) {
 		okButton.setEnabled(enabled);
+	}
+	
+	public void setSafeLimitsDialogVisiable(boolean isVisiable) {
+		safeLimitsDialog.setVisible(isVisiable);
 	}
 	
 	public void addChangedListener(DocumentListener documentListener) {
@@ -257,4 +277,318 @@ public class LoginFrame extends JFrame{
 		specificTextArea.getDocument().addDocumentListener(documentListener);
 	}
 	
+	@Override
+	public void dispose() {
+		safeLimitsDialog.dispose();
+		super.dispose();
+	}
+	
+	
+	private class SafeLimitDialog extends JDialog {
+		
+		private JLabel BodyTemperatureLabel;
+		private JPanel SafeLimitPanel;
+		private JLabel bglUnitLabel;
+		private JLabel bgwlLabel;
+		private JLabel bloodGlucoseLabel;
+		private JLabel btUnitLabel;
+		private JLabel btwlLabel;
+		private JLabel hbpUnitLabel;
+		private JLabel hbpwlLabel;
+		private JLabel heartRateLabel;
+		private JFormattedTextField highBloodGlucoseTextField;
+		private JLabel highBloodPressureLabel;
+		private JFormattedTextField highBodyTemperatureTextField;
+		private JFormattedTextField highHeartRateTextField;
+		private JFormattedTextField highHighBloodPressureTextField;
+		private JFormattedTextField highLowBloodPressureTextField;
+		private JLabel hrUnitLabel;
+		private JLabel hrwlLabel;
+		private JLabel lbpUnitLabel;
+		private JLabel lbpwlLabel;
+		private JFormattedTextField lowBloodGlucoseTextField;
+		private JLabel lowBloodPressureLabel;
+		private JFormattedTextField lowBodyTemperatureTextField;
+		private JFormattedTextField lowHeartRateTextField;
+		private JFormattedTextField lowHighBloodPressureTextField;
+		private JFormattedTextField lowLowBloodPressureTextField;
+		private JButton okButton;
+		private JLabel rangLabel;
+		private JLabel titleLabel;
+		private JLabel vitalSignsLabel;
+		
+		/**
+		 * Creates new form SafeLimitDialog
+		 */
+		public SafeLimitDialog(Frame parent, boolean modal) {
+			super(parent, modal);
+			initComponents();
+			initValues();
+			setLocationRelativeTo(parent);
+			
+			WindowListener listener = new WindowAdapter() {
+				@Override
+				public void windowClosing(WindowEvent w) {
+					SafeLimitDialog.this.setVisible(false);
+				}
+			};
+			addWindowListener(listener);
+		}
+		
+		/**
+		 * Set default values to text fields.
+		 */
+		private void initValues() {
+			lowHeartRateTextField.setText(Double.toString(SafeLimit.DEFAULT_NORMAL_LOW_HEART_RATE));
+			highHeartRateTextField.setText(Double.toString(SafeLimit.DEFAULT_NORMAL_HIGH_HEART_RATE));
+			lowBodyTemperatureTextField.setText(Double.toString(SafeLimit.DEFAULT_NORMAL_LOW_TEMPERATURE));
+			highBodyTemperatureTextField.setText(Double.toString(SafeLimit.DEFAULT_NORMAL_HIGH_TEMPERATURE));
+			lowHighBloodPressureTextField.setText(Double.toString(SafeLimit.DEFAULT_NORMAL_HIGH_PRESSURE_DOWN));
+			highHighBloodPressureTextField.setText(Double.toString(SafeLimit.DEFAULT_NORMAL_HIGH_PRESSURE_UP));
+			lowLowBloodPressureTextField.setText(Double.toString(SafeLimit.DEFAULT_NORMAL_LOW_PRESSURE_DOWN));
+			highLowBloodPressureTextField.setText(Double.toString(SafeLimit.DEFAULT_NORMAL_LOW_PRESSURE_UP));
+			lowBloodGlucoseTextField.setText(Double.toString(SafeLimit.DEFAULT_NORMAL_LOW_BLOOD_GLUCOSE_LEVEL));
+			highBloodGlucoseTextField.setText(Double.toString(SafeLimit.DEFAULT_NORMAL_HIGH_BLOOD_GLUCOSE_LEVEL));
+		}
+		
+		/**
+		 * This method is called from within the constructor to
+		 * initialize the form.
+		 */
+		@SuppressWarnings("unchecked")
+		private void initComponents() {
+
+			SafeLimitPanel = new JPanel();
+			heartRateLabel = new JLabel();
+			BodyTemperatureLabel = new JLabel();
+			highBloodPressureLabel = new JLabel();
+			lowBloodPressureLabel = new JLabel();
+			bloodGlucoseLabel = new JLabel();
+			vitalSignsLabel = new JLabel();
+			rangLabel = new JLabel();
+			lowHeartRateTextField = new JFormattedTextField(NumberFormat.getInstance());
+			highHeartRateTextField = new JFormattedTextField(NumberFormat.getInstance());
+			lowBodyTemperatureTextField = new JFormattedTextField(NumberFormat.getInstance());
+			highBodyTemperatureTextField = new JFormattedTextField(NumberFormat.getInstance());
+			lowHighBloodPressureTextField = new JFormattedTextField(NumberFormat.getInstance());
+			highHighBloodPressureTextField = new JFormattedTextField(NumberFormat.getInstance());
+			lowLowBloodPressureTextField = new JFormattedTextField(NumberFormat.getInstance());
+			highLowBloodPressureTextField = new JFormattedTextField(NumberFormat.getInstance());
+			lowBloodGlucoseTextField = new JFormattedTextField(NumberFormat.getInstance());
+			highBloodGlucoseTextField = new JFormattedTextField(NumberFormat.getInstance());
+			titleLabel = new JLabel();
+			hrwlLabel = new JLabel();
+			btwlLabel = new JLabel();
+			hbpwlLabel = new JLabel();
+			lbpwlLabel = new JLabel();
+			bgwlLabel = new JLabel();
+			okButton = new JButton();
+			hrUnitLabel = new JLabel();
+			btUnitLabel = new JLabel();
+			hbpUnitLabel = new JLabel();
+			lbpUnitLabel = new JLabel();
+			bglUnitLabel = new JLabel();
+
+			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+			setModal(true);
+			setName("SafeLimitDialog");
+			setResizable(false);
+
+			SafeLimitPanel.setPreferredSize(new java.awt.Dimension(400, 300));
+
+			heartRateLabel.setText("Heart Rate:");
+
+			BodyTemperatureLabel.setText("Body Temperature:");
+
+			highBloodPressureLabel.setText("High Blood Pressure:");
+
+			lowBloodPressureLabel.setText("Low Blood Pressure:");
+
+			bloodGlucoseLabel.setText("Blood Glucose:");
+
+			vitalSignsLabel.setText("Vital Signs");
+
+			rangLabel.setText("Range");
+
+			lowHeartRateTextField.setHorizontalAlignment(JTextField.CENTER);
+
+			highHeartRateTextField.setHorizontalAlignment(JTextField.CENTER);
+
+			lowBodyTemperatureTextField.setHorizontalAlignment(JTextField.CENTER);
+
+			highBodyTemperatureTextField.setHorizontalAlignment(JTextField.CENTER);
+
+			lowHighBloodPressureTextField.setHorizontalAlignment(JTextField.CENTER);
+
+			highHighBloodPressureTextField.setHorizontalAlignment(JTextField.CENTER);
+
+			lowLowBloodPressureTextField.setHorizontalAlignment(JTextField.CENTER);
+
+			highLowBloodPressureTextField.setHorizontalAlignment(JTextField.CENTER);
+
+			lowBloodGlucoseTextField.setHorizontalAlignment(JTextField.CENTER);
+
+			highBloodGlucoseTextField.setHorizontalAlignment(JTextField.CENTER);
+
+			titleLabel.setFont(titleLabel.getFont().deriveFont(titleLabel.getFont().getStyle() | java.awt.Font.BOLD, titleLabel.getFont().getSize() + 8));
+			titleLabel.setText("Safe Limits");
+
+			hrwlLabel.setText("~");
+
+			btwlLabel.setText("~");
+
+			hbpwlLabel.setText("~");
+
+			lbpwlLabel.setText("~");
+
+			bgwlLabel.setText("~");
+
+			okButton.setText("OK");
+
+			hrUnitLabel.setText("beats/min");
+
+			btUnitLabel.setText("℃");
+
+			hbpUnitLabel.setText("mmhg");
+
+			lbpUnitLabel.setText("mmhg");
+
+			bglUnitLabel.setText("mg/dL");
+
+        GroupLayout SafeLimitPanelLayout = new GroupLayout(SafeLimitPanel);
+        SafeLimitPanel.setLayout(SafeLimitPanelLayout);
+        SafeLimitPanelLayout.setHorizontalGroup(
+            SafeLimitPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(SafeLimitPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(SafeLimitPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addGroup(SafeLimitPanelLayout.createSequentialGroup()
+                        .addGroup(SafeLimitPanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                            .addComponent(bloodGlucoseLabel)
+                            .addComponent(vitalSignsLabel)
+                            .addComponent(heartRateLabel)
+                            .addComponent(BodyTemperatureLabel)
+                            .addComponent(highBloodPressureLabel)
+                            .addComponent(lowBloodPressureLabel))
+                        .addGroup(SafeLimitPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                            .addGroup(SafeLimitPanelLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(SafeLimitPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lowHeartRateTextField, GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                                    .addComponent(lowBodyTemperatureTextField)
+                                    .addComponent(lowHighBloodPressureTextField)
+                                    .addComponent(lowLowBloodPressureTextField)
+                                    .addComponent(lowBloodGlucoseTextField))
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(SafeLimitPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                    .addGroup(SafeLimitPanelLayout.createSequentialGroup()
+                                        .addComponent(bgwlLabel)
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(highBloodGlucoseTextField, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(bglUnitLabel))
+                                    .addGroup(SafeLimitPanelLayout.createSequentialGroup()
+                                        .addComponent(hrwlLabel)
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(highHeartRateTextField, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(hrUnitLabel))
+                                    .addGroup(SafeLimitPanelLayout.createSequentialGroup()
+                                        .addComponent(btwlLabel)
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(highBodyTemperatureTextField, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btUnitLabel))
+                                    .addGroup(SafeLimitPanelLayout.createSequentialGroup()
+                                        .addComponent(hbpwlLabel)
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(highHighBloodPressureTextField, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(hbpUnitLabel))
+                                    .addGroup(SafeLimitPanelLayout.createSequentialGroup()
+                                        .addComponent(lbpwlLabel)
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(highLowBloodPressureTextField, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lbpUnitLabel))))
+                            .addGroup(SafeLimitPanelLayout.createSequentialGroup()
+                                .addGap(83, 83, 83)
+                                .addComponent(rangLabel)))
+                        .addContainerGap(29, Short.MAX_VALUE))
+                    .addGroup(GroupLayout.Alignment.TRAILING, SafeLimitPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(SafeLimitPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                            .addGroup(GroupLayout.Alignment.TRAILING, SafeLimitPanelLayout.createSequentialGroup()
+                                .addComponent(titleLabel)
+                                .addGap(137, 137, 137))
+                            .addGroup(GroupLayout.Alignment.TRAILING, SafeLimitPanelLayout.createSequentialGroup()
+                                .addComponent(okButton, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())))))
+        );
+        SafeLimitPanelLayout.setVerticalGroup(
+            SafeLimitPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(SafeLimitPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(titleLabel)
+                .addGap(18, 18, 18)
+                .addGroup(SafeLimitPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(vitalSignsLabel)
+                    .addComponent(rangLabel))
+                .addGap(18, 18, 18)
+                .addGroup(SafeLimitPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(heartRateLabel)
+                    .addComponent(lowHeartRateTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hrwlLabel)
+                    .addComponent(highHeartRateTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hrUnitLabel))
+                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(SafeLimitPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(BodyTemperatureLabel)
+                    .addComponent(lowBodyTemperatureTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btwlLabel)
+                    .addComponent(highBodyTemperatureTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btUnitLabel))
+                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(SafeLimitPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(highBloodPressureLabel)
+                    .addComponent(lowHighBloodPressureTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hbpwlLabel)
+                    .addComponent(highHighBloodPressureTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hbpUnitLabel))
+                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(SafeLimitPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(lowBloodPressureLabel)
+                    .addComponent(lowLowBloodPressureTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbpwlLabel)
+                    .addComponent(highLowBloodPressureTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbpUnitLabel))
+                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(SafeLimitPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(bloodGlucoseLabel)
+                    .addGroup(SafeLimitPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(lowBloodGlucoseTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bgwlLabel)
+                        .addComponent(highBloodGlucoseTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bglUnitLabel)))
+                .addGap(15, 15, 15)
+                .addComponent(okButton)
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+
+        GroupLayout layout = new GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(SafeLimitPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addComponent(SafeLimitPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        );
+
+        pack();
+		}
+	}
 }

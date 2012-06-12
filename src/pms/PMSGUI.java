@@ -641,7 +641,7 @@ public class PMSGUI extends JFrame implements Display {
 	public void temperatureNoSignal() {
 		tempTitleLabel.setForeground(NO_SIGNAL_COLOR);
 		tempValueLabel.setForeground(NO_SIGNAL_COLOR);
-		ecgValueLabel.setText(NO_SIGNAL_TEXT);
+		tempValueLabel.setText(NO_SIGNAL_TEXT);
 	}
 
 	/**

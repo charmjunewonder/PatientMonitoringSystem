@@ -53,7 +53,7 @@ public class Monitor {
 		temperatureSensor = new TemperatureSensor();
 		heartRateSensor = new HeartRateSensor();
 		intravenousInputMachine = new IntravenousInputMachine();
-		vitalSignLogger = new VitalSignLogger(patient);
+		vitalSignLogger = new VitalSignLogger(patient.getName(), patient.toString());
 		alarm = new Alarm();
 		safeLimit = new SafeLimit();
 
@@ -215,7 +215,7 @@ public class Monitor {
 			@Override
 			public void run() {
 				PatientInfo p = new PatientInfo("Eric", "Utopia", "BK001", 20,
-						Gender.MALE, 150.5, 188.0, "--");
+						Gender.MALE, 150.5, 188.0, null, "--");
 				new Monitor(p);
 			}
 		});
