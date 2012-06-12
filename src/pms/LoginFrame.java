@@ -57,146 +57,149 @@ public class LoginFrame extends JFrame{
 	 * Initialize components. 
 	 */
 	private void initComponents() {
-		loginPanel = new JPanel();
-		titleLabel = new JLabel();
-		nameLabel = new JLabel();
-		addressLabel = new JLabel();
-		patientNumberLabel = new JLabel();
-		ageHintLabel = new JLabel();
-		genderLabel = new JLabel();
-		weightLabel = new JLabel();
-		heightLabel = new JLabel();
-		specificLabel = new JLabel();
-		nameTextField = new JTextField();
-		addressTextField = new JTextField();
-		patientNumberTextField = new JTextField();
-		ageTextField = new JTextField();
-		weightTextField = new JTextField();
-		heightTextField = new JTextField();
-		conditionScrollPane = new JScrollPane();
-		specificTextArea = new JTextArea();
-		genderButtonGroup = new ButtonGroup();
-		maleRadioButton = new JRadioButton();
-		femaleRadioButton = new JRadioButton();
-		okButton = new JButton();
-		ageLabel = new JLabel();
-		safeLimitsDialog = new SafeLimitDialog(this, true);
+		
+        genderButtonGroup = new javax.swing.ButtonGroup();
+        loginPanel = new javax.swing.JPanel();
+        titleLabel = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
+        addressLabel = new javax.swing.JLabel();
+        patientNumberLabel = new javax.swing.JLabel();
+        ageHintLabel = new javax.swing.JLabel();
+        genderLabel = new javax.swing.JLabel();
+        weightLabel = new javax.swing.JLabel();
+        heightLabel = new javax.swing.JLabel();
+        specificLabel = new javax.swing.JLabel();
+        nameTextField = new javax.swing.JTextField();
+        addressTextField = new javax.swing.JTextField();
+        patientNumberTextField = new javax.swing.JTextField();
+        ageTextField = new javax.swing.JTextField();
+        weightTextField = new javax.swing.JTextField();
+        heightTextField = new javax.swing.JTextField();
+        conditionScrollPane = new javax.swing.JScrollPane();
+        specificTextArea = new javax.swing.JTextArea();
+        maleRadioButton = new javax.swing.JRadioButton();
+        femaleRadioButton = new javax.swing.JRadioButton();
+        okButton = new javax.swing.JButton();
+        ageLabel = new javax.swing.JLabel();
+        safeLimitsButton = new javax.swing.JButton();
+	safeLimitsDialog = new SafeLimitDialog(this, true);
 
-		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		setMinimumSize(new java.awt.Dimension(640, 480));
-		setResizable(false);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(640, 480));
+        setResizable(false);
 
-		loginPanel.setMinimumSize(new java.awt.Dimension(640, 480));
-		loginPanel.setPreferredSize(new java.awt.Dimension(640, 480));
-		loginPanel.setRequestFocusEnabled(false);
-		loginPanel.setLayout(null);
+        loginPanel.setMinimumSize(new java.awt.Dimension(640, 480));
+        loginPanel.setPreferredSize(new java.awt.Dimension(640, 480));
+        loginPanel.setRequestFocusEnabled(false);
+        loginPanel.setLayout(null);
 
-		titleLabel.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
-		titleLabel.setText("Patient Monitoring System");
-		loginPanel.add(titleLabel);
-		titleLabel.setBounds(230, 10, 185, 21);
+        titleLabel.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
+        titleLabel.setText("Patient Monitoring System");
+        loginPanel.add(titleLabel);
+        titleLabel.setBounds(230, 10, 185, 21);
 
-		nameLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-		nameLabel.setHorizontalAlignment(SwingConstants.TRAILING);
-		nameLabel.setText("Name: ");
-		nameLabel.setPreferredSize(new java.awt.Dimension(60, 22));
-		loginPanel.add(nameLabel);
-		nameLabel.setBounds(10, 50, 170, 20);
+        nameLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        nameLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        nameLabel.setText("Name: ");
+        nameLabel.setPreferredSize(new java.awt.Dimension(60, 22));
+        loginPanel.add(nameLabel);
+        nameLabel.setBounds(10, 50, 170, 20);
 
-		addressLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-		addressLabel.setHorizontalAlignment(SwingConstants.TRAILING);
-		addressLabel.setText("Address: ");
-		loginPanel.add(addressLabel);
-		addressLabel.setBounds(10, 80, 170, 20);
+        addressLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        addressLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        addressLabel.setText("Address: ");
+        loginPanel.add(addressLabel);
+        addressLabel.setBounds(10, 80, 170, 20);
 
-		patientNumberLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-		patientNumberLabel.setHorizontalAlignment(SwingConstants.TRAILING);
-		patientNumberLabel.setText("PatientNumber: ");
-		loginPanel.add(patientNumberLabel);
-		patientNumberLabel.setBounds(10, 110, 170, 20);
+        patientNumberLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        patientNumberLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        patientNumberLabel.setText("PatientNumber: ");
+        loginPanel.add(patientNumberLabel);
+        patientNumberLabel.setBounds(10, 110, 170, 20);
 
-		ageHintLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-		ageHintLabel.setText("[1~999]");
-		ageHintLabel.setPreferredSize(new java.awt.Dimension(150, 20));
-		loginPanel.add(ageHintLabel);
-		ageHintLabel.setBounds(470, 140, 150, 20);
+        ageHintLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        ageHintLabel.setText("[1~999]");
+        ageHintLabel.setPreferredSize(new java.awt.Dimension(150, 20));
+        loginPanel.add(ageHintLabel);
+        ageHintLabel.setBounds(470, 140, 150, 20);
 
-		genderLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-		genderLabel.setHorizontalAlignment(SwingConstants.TRAILING);
-		genderLabel.setText("Gender: ");
-		loginPanel.add(genderLabel);
-		genderLabel.setBounds(10, 170, 170, 20);
+        genderLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        genderLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        genderLabel.setText("Gender: ");
+        loginPanel.add(genderLabel);
+        genderLabel.setBounds(10, 170, 170, 20);
 
-		weightLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-		weightLabel.setHorizontalAlignment(SwingConstants.TRAILING);
-		weightLabel.setText("Weight: ");
-		loginPanel.add(weightLabel);
-		weightLabel.setBounds(10, 200, 170, 20);
+        weightLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        weightLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        weightLabel.setText("Weight: ");
+        loginPanel.add(weightLabel);
+        weightLabel.setBounds(10, 200, 170, 20);
 
-		heightLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-		heightLabel.setHorizontalAlignment(SwingConstants.TRAILING);
-		heightLabel.setText("Height: ");
-		loginPanel.add(heightLabel);
-		heightLabel.setBounds(10, 230, 170, 20);
+        heightLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        heightLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        heightLabel.setText("Height: ");
+        loginPanel.add(heightLabel);
+        heightLabel.setBounds(10, 230, 170, 20);
 
-		specificLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-		specificLabel.setHorizontalAlignment(SwingConstants.TRAILING);
-		specificLabel.setText("Medical Condition: ");
-		loginPanel.add(specificLabel);
-		specificLabel.setBounds(10, 260, 170, 20);
+        specificLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        specificLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        specificLabel.setText("Medical Condition: ");
+        loginPanel.add(specificLabel);
+        specificLabel.setBounds(10, 260, 170, 20);
+        loginPanel.add(nameTextField);
+        nameTextField.setBounds(190, 50, 270, 21);
+        loginPanel.add(addressTextField);
+        addressTextField.setBounds(190, 80, 270, 21);
+        loginPanel.add(patientNumberTextField);
+        patientNumberTextField.setBounds(190, 110, 270, 21);
 
-		loginPanel.add(nameTextField);
-		nameTextField.setBounds(190, 50, 270, 21);
+        ageTextField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        loginPanel.add(ageTextField);
+        ageTextField.setBounds(190, 140, 271, 21);
+        loginPanel.add(weightTextField);
+        weightTextField.setBounds(190, 200, 271, 21);
+        loginPanel.add(heightTextField);
+        heightTextField.setBounds(190, 230, 271, 21);
 
-		loginPanel.add(addressTextField);
-		addressTextField.setBounds(190, 80, 270, 21);
-		loginPanel.add(patientNumberTextField);
-		patientNumberTextField.setBounds(190, 110, 270, 21);
+        specificTextArea.setColumns(20);
+        specificTextArea.setRows(8);
+        conditionScrollPane.setViewportView(specificTextArea);
 
-		ageTextField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-		loginPanel.add(ageTextField);
-		ageTextField.setBounds(190, 140, 271, 21);
-		loginPanel.add(weightTextField);
-		weightTextField.setBounds(190, 200, 271, 21);
-		loginPanel.add(heightTextField);
-		heightTextField.setBounds(190, 230, 271, 21);
+        loginPanel.add(conditionScrollPane);
+        conditionScrollPane.setBounds(190, 260, 271, 170);
 
-		specificTextArea.setColumns(20);
-		specificTextArea.setRows(8);
-		conditionScrollPane.setViewportView(specificTextArea);
+        genderButtonGroup.add(maleRadioButton);
+        maleRadioButton.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        maleRadioButton.setSelected(true);
+        maleRadioButton.setText("Male");
+        loginPanel.add(maleRadioButton);
+        maleRadioButton.setBounds(240, 170, 60, 25);
 
-		loginPanel.add(conditionScrollPane);
-		conditionScrollPane.setBounds(190, 260, 271, 160);
+        genderButtonGroup.add(femaleRadioButton);
+        femaleRadioButton.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        femaleRadioButton.setText("Female");
+        loginPanel.add(femaleRadioButton);
+        femaleRadioButton.setBounds(350, 170, 80, 25);
 
-		maleRadioButton.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-		maleRadioButton.setSelected(true);
-		maleRadioButton.setText("Male");
-		genderButtonGroup.add(maleRadioButton);
+        okButton.setFont(okButton.getFont().deriveFont(okButton.getFont().getSize()+2f));
+        okButton.setText("OK");
+        okButton.setEnabled(false);
+        loginPanel.add(okButton);
+        okButton.setBounds(550, 440, 70, 25);
 
-		loginPanel.add(maleRadioButton);
-		maleRadioButton.setBounds(240, 170, 60, 25);
+        ageLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        ageLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        ageLabel.setText("Age: ");
+        ageLabel.setPreferredSize(new java.awt.Dimension(150, 20));
+        loginPanel.add(ageLabel);
+        ageLabel.setBounds(10, 140, 170, 20);
 
-		femaleRadioButton.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-		femaleRadioButton.setText("Female");
-		genderButtonGroup.add(femaleRadioButton);
+        safeLimitsButton.setFont(new java.awt.Font("Arial Unicode MS", 0, 14)); // NOI18N
+        safeLimitsButton.setText("Safe Limits");
+        loginPanel.add(safeLimitsButton);
+        safeLimitsButton.setBounds(20, 440, 110, 27);
 
-		loginPanel.add(femaleRadioButton);
-		femaleRadioButton.setBounds(350, 170, 80, 25);
-
-		okButton.setFont(okButton.getFont().deriveFont(okButton.getFont().getSize() + 2f));
-		okButton.setText("OK");
-
-		loginPanel.add(okButton);
-		okButton.setBounds(550, 440, 70, 25);
-
-		ageLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-		ageLabel.setHorizontalAlignment(SwingConstants.TRAILING);
-		ageLabel.setText("Age: ");
-		ageLabel.setPreferredSize(new java.awt.Dimension(150, 20));
-		loginPanel.add(ageLabel);
-		ageLabel.setBounds(10, 140, 170, 20);
-
-		getContentPane().add(loginPanel, java.awt.BorderLayout.CENTER);
+        getContentPane().add(loginPanel, java.awt.BorderLayout.PAGE_START);
 
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		int X = (screen.width / 2) - (getWidth() / 2); // Center horizontally.
@@ -263,6 +266,10 @@ public class LoginFrame extends JFrame{
 		okButton.setEnabled(enabled);
 	}
 	
+	public void setSafeLimitsOkButtonEnabled(boolean enabled) {
+		safeLimitsDialog.okButton.setEnabled(enabled);
+	}
+	
 	public void setSafeLimitsDialogVisiable(boolean isVisiable) {
 		safeLimitsDialog.setVisible(isVisiable);
 	}
@@ -275,6 +282,59 @@ public class LoginFrame extends JFrame{
 		weightTextField.getDocument().addDocumentListener(documentListener);
 		heightTextField.getDocument().addDocumentListener(documentListener);
 		specificTextArea.getDocument().addDocumentListener(documentListener);
+	}
+	
+	public void addSafeLimitsChangedListener(DocumentListener docuementListener) {
+		safeLimitsDialog.lowHeartRateTextField.getDocument().addDocumentListener(docuementListener);
+		safeLimitsDialog.highHeartRateTextField.getDocument().addDocumentListener(docuementListener);
+		safeLimitsDialog.lowBodyTemperatureTextField.getDocument().addDocumentListener(docuementListener);
+		safeLimitsDialog.highBodyTemperatureTextField.getDocument().addDocumentListener(docuementListener);
+		safeLimitsDialog.lowLowBloodPressureTextField.getDocument().addDocumentListener(docuementListener);
+		safeLimitsDialog.lowHighBloodPressureTextField.getDocument().addDocumentListener(docuementListener);
+		safeLimitsDialog.highLowBloodPressureTextField.getDocument().addDocumentListener(docuementListener);
+		safeLimitsDialog.highHighBloodPressureTextField.getDocument().addDocumentListener(docuementListener);
+		safeLimitsDialog.lowBloodGlucoseTextField.getDocument().addDocumentListener(docuementListener);
+		safeLimitsDialog.highBloodGlucoseTextField.getDocument().addDocumentListener(docuementListener);
+	}
+	
+	public String getLowHeartRate() {
+		return safeLimitsDialog.lowHeartRateTextField.getText();
+	}
+	
+	public String getHighHeartRate() {
+		return safeLimitsDialog.highHeartRateTextField.getText();
+	}
+	
+	public String getLowBodyTemperature() {
+		return safeLimitsDialog.lowBodyTemperatureTextField.getText();
+	}
+	
+	public String getHighBodyTemperature() {
+		return safeLimitsDialog.highBodyTemperatureTextField.getText();
+	}
+	
+	public String getLowLowBloodPressure() {
+		return safeLimitsDialog.lowLowBloodPressureTextField.getText();
+	}
+	
+	public String getLowHighBloodPressure() {
+		return safeLimitsDialog.lowHighBloodPressureTextField.getText();
+	}
+	
+	public String getHighLowBloodPressure() {
+		return safeLimitsDialog.highLowBloodPressureTextField.getText();
+	}
+	
+	public String getHighHighBloodPressure() {
+		return safeLimitsDialog.highHighBloodPressureTextField.getText();
+	}
+	
+	public String getLowBloodGlucose() {
+		return safeLimitsDialog.lowBloodGlucoseTextField.getText();
+	}
+	
+	public String getHighBloodGlucose() {
+		return safeLimitsDialog.highBloodGlucoseTextField.getText();
 	}
 	
 	@Override

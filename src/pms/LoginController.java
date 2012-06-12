@@ -76,6 +76,77 @@ public class LoginController {
 			
 		});
 		
+		loginFrame.addSafeLimitsChangedListener(new DocumentListener() {
+
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				stateChanged();
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				stateChanged();
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				stateChanged();
+			}
+			
+			private void stateChanged() {
+				String lowHeartRate = loginFrame.getLowHeartRate();
+				String highHeartRate = loginFrame.getHighHeartRate();
+				String lowBodyTemperature = loginFrame.getLowBodyTemperature();
+				String highBodyTemperature = loginFrame.getHighBodyTemperature();
+				String lowLowBloodPressure = loginFrame.getLowLowBloodPressure();
+				String lowHighBloodPressure = loginFrame.getLowHighBloodPressure();
+				String highLowBloodPressure = loginFrame.getHighLowBloodPressure();
+				String highHighBloodPressure = loginFrame.getHighHighBloodPressure();
+				String lowBloodGlucose = loginFrame.getLowBloodGlucose();
+				String highBloodGlucose = loginFrame.getHighBloodGlucose();
+				
+				if(!lowHeartRate.isEmpty()
+					&& !highHeartRate.isEmpty()
+					&& !lowBodyTemperature.isEmpty()
+					&& !highBodyTemperature.isEmpty()
+					&& !lowLowBloodPressure.isEmpty()
+					&& !lowHighBloodPressure.isEmpty()
+					&& !highLowBloodPressure.isEmpty()
+					&& !highHighBloodPressure.isEmpty()
+					&& !lowBloodGlucose.isEmpty()
+					&& !highBloodGlucose.isEmpty()) {
+					try {
+						if(Double.parseDouble(lowHeartRate) > 0
+							&& Double.parseDouble(lowHeartRate) < 
+							Double.parseDouble(highHeartRate)
+							&& Double.parseDouble(lowBodyTemperature) > 0
+							&& Double.parseDouble(lowBodyTemperature) < 
+							Double.parseDouble(highBodyTemperature)
+							&& Double.parseDouble(lowLowBloodPressure) > 0
+							&& Double.parseDouble(lowLowBloodPressure) < 
+							Double.parseDouble(lowHighBloodPressure)
+							&& Double.parseDouble(highLowBloodPressure) > 0
+							&& Double.parseDouble(highLowBloodPressure) < 
+							Double.parseDouble(highHighBloodPressure)
+							&& Double.parseDouble(lowLowBloodPressure) < 
+							Double.parseDouble(highLowBloodPressure)
+							&& Double.parseDouble(lowHighBloodPressure) < 
+							Double.parseDouble(highHighBloodPressure)
+							&& Double.parseDouble(lowBloodGlucose) > 0
+							&& Double.parseDouble(lowBloodGlucose) < 
+							Double.parseDouble(highBloodGlucose)) {
+							loginFrame.setSafeLimitsOkButtonEnabled(true);
+							return;
+						}
+					}
+					catch (NumberFormatException ex) {
+						int o = 0;
+					}
+				}
+				loginFrame.setSafeLimitsOkButtonEnabled(false);
+			}
+		});
+		
 		loginFrame.addOkButtonActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -88,6 +159,17 @@ public class LoginController {
 				Double height = Double.parseDouble(loginFrame.getPatientHeight());
 				String condition = loginFrame.getPatientSpecificCondition();
 				
+				String lowHeartRate = loginFrame.getLowHeartRate();
+				String highHeartRate = loginFrame.getHighHeartRate();
+				String lowBodyTemperature = loginFrame.getLowBodyTemperature();
+				String highBodyTemperature = loginFrame.getHighBodyTemperature();
+				String lowLowBloodPressure = loginFrame.getLowLowBloodPressure();
+				String lowHighBloodPressure = loginFrame.getLowHighBloodPressure();
+				String highLowBloodPressure = loginFrame.getHighLowBloodPressure();
+				String highHighBloodPressure = loginFrame.getHighHighBloodPressure();
+				String lowBloodGlucose = loginFrame.getLowBloodGlucose();
+				String highBloodGlucose = loginFrame.getHighBloodGlucose();
+				
 				loginFrame.dispose();
 				
 				new Monitor(new PatientInfo(
@@ -98,9 +180,36 @@ public class LoginController {
 					gender,
 					weight,
 					height,
-					null,
+					new SafeLimit(
+					Double.parseDouble(lowHeartRate),
+					Double.parseDouble(highHeartRate),
+					Double.parseDouble(lowBodyTemperature),
+					Double.parseDouble(highBodyTemperature),
+					Double.parseDouble(lowLowBloodPressure),
+					Double.parseDouble(lowHighBloodPressure),
+					Double.parseDouble(highLowBloodPressure),
+					Double.parseDouble(highHighBloodPressure),
+					Double.parseDouble(lowBloodGlucose),
+					Double.parseDouble(highBloodGlucose)
+					),
 					condition
 					));
+			}
+		});
+		
+		loginFrame.addSafeLimitsButtonListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				loginFrame.setSafeLimitsDialogVisiable(true);
+			}
+		});
+		
+		loginFrame.addSafeLimitsOkButtonListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				loginFrame.setSafeLimitsDialogVisiable(false);
 			}
 		});
 	}
