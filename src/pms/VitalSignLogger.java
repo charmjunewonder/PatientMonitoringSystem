@@ -1,5 +1,6 @@
 package pms;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
@@ -14,7 +15,7 @@ import java.util.Calendar;
  */
 public class VitalSignLogger {
 	
-	public static final String LOGFOLDER = "logfiles/";
+	public static final String LOGFOLDER = "logfiles\\";
 	public static final String EXTENSION = "patientinfo";
 	
 	private PrintWriter out;
@@ -32,6 +33,10 @@ public class VitalSignLogger {
 			+ dateFormat.format(cal.getTime()).toString()
 			+ "." + EXTENSION;
 		try {
+			File logFolder = new File(LOGFOLDER);
+			if(!logFolder.exists()) {
+				logFolder.mkdir();
+			}
 			out = new PrintWriter(fileName);
 		}
 		catch(IOException ex) {

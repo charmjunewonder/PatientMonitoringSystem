@@ -157,7 +157,7 @@ public class Monitor {
 					|| glucose < BloodGlucoseLevelSensor.NORMAL_LOW_BLOOD_GLUCOSE_LEVEL)
 				glucoseOutOfLifeLimit = true;
 			view.displayBloodGlucoseLevel(glucose, glucoseOutOfLifeLimit);
-			vitalSignLogger.addRecord("Blood Glucose Level: " + (int)glucose);
+			vitalSignLogger.addRecord("Blood Glucose Level: " + String.format("%.1f", glucose));
 		} catch (BloodGlucoseLevelNoSignalException e) {
 			//TODO view.displayBloodGlucoseLevel(0, true);
 		}
