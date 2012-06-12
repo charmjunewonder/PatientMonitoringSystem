@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import pms.Patient.Gender;
+import pms.PatientInfo.Gender;
 
 /**
  * Controller for LoginFrame.
@@ -90,7 +90,7 @@ public class LoginController {
 				
 				loginFrame.dispose();
 				
-				new Monitor(new Patient(
+				new Monitor(new PatientInfo(
 					name,
 					address,
 					patientNumber,

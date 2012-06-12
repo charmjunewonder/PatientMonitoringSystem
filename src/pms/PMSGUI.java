@@ -6,7 +6,7 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 /**
- * GUI for Patient Monitoring System.
+ * GUI for PatientInfo Monitoring System.
  *
  * @author Anthony
  * @version 0.1
@@ -62,7 +62,7 @@ public class PMSGUI extends JFrame implements Display {
 	 * 
 	 * @param patient patient information to show
 	 */
-	public PMSGUI(Patient patient) {
+	public PMSGUI(PatientInfo patient) {
 		initComponents();
 		
 		nameLabel.setText(patient.getName());

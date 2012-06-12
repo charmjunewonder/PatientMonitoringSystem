@@ -25,7 +25,7 @@ public class VitalSignLogger {
 	 * 
 	 * @param patient target patient to record
 	 */
-	public VitalSignLogger(Patient patient) {
+	public VitalSignLogger(PatientInfo patient) {
 		DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
 		Calendar cal = Calendar.getInstance();
 		String fileName = LOGFOLDER

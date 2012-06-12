@@ -9,7 +9,7 @@ import javax.swing.Timer;
 import pms.BloodGlucoseLevelSensor.BloodGlucoseLevelNoSignalException;
 import pms.BloodPressureSensor.BloodPressureNoSignalException;
 import pms.HeartRateSensor.HeartRateSenserNoSignalException;
-import pms.Patient.Gender;
+import pms.PatientInfo.Gender;
 import pms.TemperatureSensor.TemperatureNoSignalException;
 
 /**
@@ -44,7 +44,7 @@ public class Monitor {
 	 * 
 	 * @param patient
 	 */
-	public Monitor(Patient patient) {
+	public Monitor(PatientInfo patient) {
 		view = new PMSGUI(patient);
 		view.setVisible(true);
 
@@ -214,7 +214,7 @@ public class Monitor {
 
 			@Override
 			public void run() {
-				Patient p = new Patient("Eric", "Utopia", "BK001", 20,
+				PatientInfo p = new PatientInfo("Eric", "Utopia", "BK001", 20,
 						Gender.MALE, 150.5, 188.0, "--");
 				new Monitor(p);
 			}

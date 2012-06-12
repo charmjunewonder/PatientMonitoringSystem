@@ -5,10 +5,10 @@ import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.event.DocumentListener;
-import pms.Patient.Gender;
+import pms.PatientInfo.Gender;
 
 /**
- * LoginFrame of Patient Monitoring System.
+ * LoginFrame of PatientInfo Monitoring System.
  *
  * @author charmjunewonder
  * @version 0.1
