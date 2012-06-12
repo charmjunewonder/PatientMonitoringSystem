@@ -100,11 +100,11 @@ public class Monitor {
 		// check if four value is out of life limit or not.
 		ActionListener intravenousInputAction = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				view.displayInfo("");
+				view.addInfo("");
 				if (glucoseOutOfLifeLimit && pressureOutOfLifeLimit
 						&& temperatureOutOfLifeLimit && rateOutOfLifeLimit) {
 					intravenousInputMachine.activate();
-					view.displayInfo("The patient is injected.");
+					view.addInfo("The patient is injected.");
 				}
 			}
 		};
@@ -122,7 +122,7 @@ public class Monitor {
 					|| rate < safeLimit.getNormalLowHeartRate()) {
 				rateOutOfLifeLimit = true;
 				alarm.ring();
-				view.displayInfo("Heart rate is out of safe limit..");
+				view.addInfo("Heart rate is out of safe limit..");
 			}
 			view.displayHeartRate(rate, rateOutOfLifeLimit);
 			vitalSignLogger.addRecord("Heart Rate: " + (int) rate);
@@ -147,7 +147,7 @@ public class Monitor {
 					|| lowPressure < safeLimit.getNormalLowPressureDown()) {
 				pressureOutOfLifeLimit = true;
 				alarm.ring();
-				view.displayInfo("Blood pressure is out of safe limit.");
+				view.addInfo("Blood pressure is out of safe limit.");
 			}
 			view.displayBloodPressure(highPressure, lowPressure,
 					pressureOutOfLifeLimit);
@@ -172,7 +172,7 @@ public class Monitor {
 					|| glucose < safeLimit.getNormalLowBloodGlucoseLevel()) {
 				glucoseOutOfLifeLimit = true;
 				alarm.ring();
-				view.displayInfo("Blood glucose level is out of safe limit.");
+				view.addInfo("Blood glucose level is out of safe limit.");
 			}
 			view.displayBloodGlucoseLevel(glucose, glucoseOutOfLifeLimit);
 			vitalSignLogger.addRecord("Blood Glucose Level: "
@@ -196,7 +196,7 @@ public class Monitor {
 					|| temp < safeLimit.getNormalLowTemperature()) {
 				temperatureOutOfLifeLimit = true;
 				alarm.ring();
-				view.displayInfo("Body temperature is out of safe limit.");
+				view.addInfo("Body temperature is out of safe limit.");
 			}
 			view.displayTemperature(temp, temperatureOutOfLifeLimit);
 			vitalSignLogger.addRecord("Temperature: "

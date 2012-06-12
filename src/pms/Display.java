@@ -32,9 +32,29 @@ public interface Display {
 	 * @param warning
 	 */
 	public void displayBloodGlucoseLevel(double bloodGlucoseLevel, boolean warning);
+	
+	/**
+	 * 
+	 */
+	public void heartRateNoSignal();
+	
+	/**
+	 * 
+	 */
+	public void temperatureNoSignal();
+	
+	/**
+	 * 
+	 */
+	public void bloodPressureNoSignal();
+	
+	/**
+	 * 
+	 */
+	public void bloodGlucoseLevelNoSignal();
 
 	/**
 	 * @param stateInfo
 	 */
-	public void displayInfo(String stateInfo);
+	public void addInfo(String stateInfo);
 }

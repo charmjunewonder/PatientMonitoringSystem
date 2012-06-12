@@ -19,6 +19,8 @@ public class PMSGUI extends JFrame implements Display {
 	private static final Color TEMP_COLOR = new Color(255, 153, 51);
 	private static final Color WARNING_BACKGROUND_COLOR = Color.RED;
 	private static final Color WARNING_FOREGROUND_COLOR = Color.WHITE;
+	private static final Color NO_SIGNAL_COLOR = Color.GRAY;
+	private static final String NO_SIGNAL_TEXT = "--";
 	
 	private javax.swing.JLabel ageLabel;
 	private javax.swing.JLabel ageTitleLabel;
@@ -609,6 +611,7 @@ public class PMSGUI extends JFrame implements Display {
 			gluValueLabel.setForeground(GLU_COLOR);
 		}
 	}
+	
 
 	/**
 	 * Display current state information.
@@ -616,7 +619,48 @@ public class PMSGUI extends JFrame implements Display {
 	 * @param stateInfo state information
 	 */
 	@Override
-	public void displayInfo(String stateInfo) {
-		currentStateTextArea.setText(stateInfo);
+	public void addInfo(String stateInfo) {
+		String oldInfo = currentStateTextArea.getText();
+		currentStateTextArea.setText(oldInfo + "\n" + stateInfo);
+	}
+
+	/**
+	 * Called when heart rate sensor failed.
+	 */
+	@Override
+	public void heartRateNoSignal() {
+		ecgTitleLabel.setForeground(NO_SIGNAL_COLOR);
+		ecgValueLabel.setForeground(NO_SIGNAL_COLOR);
+		ecgValueLabel.setText(NO_SIGNAL_TEXT);
+	}
+
+	/**
+	 * Called when temperature sensor failed.
+	 */
+	@Override
+	public void temperatureNoSignal() {
+		tempTitleLabel.setForeground(NO_SIGNAL_COLOR);
+		tempValueLabel.setForeground(NO_SIGNAL_COLOR);
+		ecgValueLabel.setText(NO_SIGNAL_TEXT);
+	}
+
+	/**
+	 * Called when blood pressure sensor failed.
+	 */
+	@Override
+	public void bloodPressureNoSignal() {
+		nibpTitleLabel.setForeground(NO_SIGNAL_COLOR);
+		nibpValueLabel.setForeground(NO_SIGNAL_COLOR);
+		nibpValueLabel.setText(NO_SIGNAL_TEXT);
+	}
+
+	/**
+	 * Called when blood glucose level sensor failed.
+	 */
+	@Override
+	public void bloodGlucoseLevelNoSignal() {
+		gluTitleLabel.setForeground(NO_SIGNAL_COLOR);
+		gluValueLabel.setForeground(NO_SIGNAL_COLOR);
+		gluValueLabel.setText(NO_SIGNAL_TEXT);
 	}
 }

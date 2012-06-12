@@ -5,7 +5,7 @@ import java.util.Random;
 import pms.HeartRateSensor.HeartRateSenserNoSignalException;
 
 /**
- * Simulates a senser measuring blood pressure from one patient.
+ * Simulates a sensor measuring blood pressure from one patient.
  * 
  * @author Anthony
  * @version 0.1
