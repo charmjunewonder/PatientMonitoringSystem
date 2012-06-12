@@ -43,6 +43,25 @@ public class SafeLimit {
 		normalLowTemperature = DEFAULT_NORMAL_LOW_TEMPERATURE;
 	}
 
+	public SafeLimit(double normalHighBloodGlucoseLevel,
+			double normalLowBloodGlucoseLevel, double normalHighPressureUp,
+			double normalHighPressureDown, double normalLowPressureUp,
+			double normalLowPressureDown, double normalHighHeartRate,
+			double normalLowHeartRate, double normalHighTemperature,
+			double normalLowTemperature) {
+		this.normalHighBloodGlucoseLevel = normalHighBloodGlucoseLevel;
+		this.normalLowBloodGlucoseLevel = normalLowBloodGlucoseLevel;
+		this.normalHighPressureUp = normalHighPressureUp;
+		this.normalHighPressureDown = normalHighPressureDown;
+		this.normalLowPressureUp = normalLowPressureUp;
+		this.normalLowPressureDown = normalLowPressureDown;
+		this.normalHighHeartRate = normalHighHeartRate;
+		this.normalLowHeartRate = normalLowHeartRate;
+		this.normalHighTemperature = normalHighTemperature;
+		this.normalLowTemperature = normalLowTemperature;
+
+	}
+
 	/**
 	 * return the normalHighBloodGlucoseLevel
 	 */

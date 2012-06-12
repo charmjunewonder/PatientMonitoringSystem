@@ -18,10 +18,10 @@ import pms.TemperatureSensor.TemperatureNoSignalException;
  */
 public class Monitor {
 
-	public static final int BLOOD_GLUCOSE_LEVEL_TIME = 100;
-	public static final int BLOOD_PRESSURE_TIME = 100;
-	public static final int TEMPERATURE_TIME = 100;
-	public static final int HEART_RATE_TIME = 100;
+	public static final int BLOOD_GLUCOSE_LEVEL_TIME = 1000;
+	public static final int BLOOD_PRESSURE_TIME = 1000;
+	public static final int TEMPERATURE_TIME = 1000;
+	public static final int HEART_RATE_TIME = 1000;
 
 	private PMSGUI view;
 
@@ -100,7 +100,6 @@ public class Monitor {
 		// check if four value is out of life limit or not.
 		ActionListener intravenousInputAction = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				view.addInfo("");
 				if (glucoseOutOfLifeLimit && pressureOutOfLifeLimit
 						&& temperatureOutOfLifeLimit && rateOutOfLifeLimit) {
 					intravenousInputMachine.activate();
@@ -108,7 +107,7 @@ public class Monitor {
 				}
 			}
 		};
-		new Timer(100, intravenousInputAction).start();
+		new Timer(1000, intravenousInputAction).start();
 	}
 
 	/**
@@ -122,13 +121,13 @@ public class Monitor {
 					|| rate < safeLimit.getNormalLowHeartRate()) {
 				rateOutOfLifeLimit = true;
 				alarm.ring();
-				view.addInfo("Heart rate is out of safe limit..");
+				view.addInfo("Heart rate is out of safe limit.");
 			}
 			view.displayHeartRate(rate, rateOutOfLifeLimit);
 			vitalSignLogger.addRecord("Heart Rate: " + (int) rate);
 		} catch (HeartRateSenserNoSignalException hrsnse) {
-			// TODO view.displayHeartRate(0, true);
 			alarm.ring();
+			view.heartRateNoSignal();
 		}
 		view.repaint();
 	}
@@ -154,8 +153,8 @@ public class Monitor {
 			vitalSignLogger.addRecord("Pressure low: " + (int) lowPressure
 					+ "; high: " + (int) highPressure);
 		} catch (BloodPressureNoSignalException e) {
-			// TODO view.displayBloodPressure(0, 0, true);
 			alarm.ring();
+			view.bloodPressureNoSignal();
 		}
 
 		view.repaint();
@@ -178,8 +177,8 @@ public class Monitor {
 			vitalSignLogger.addRecord("Blood Glucose Level: "
 					+ String.format("%.1f", glucose));
 		} catch (BloodGlucoseLevelNoSignalException e) {
-			// TODO view.displayBloodGlucoseLevel(0, true);
 			alarm.ring();
+			view.bloodGlucoseLevelNoSignal();
 		}
 
 		view.repaint();
@@ -202,8 +201,8 @@ public class Monitor {
 			vitalSignLogger.addRecord("Temperature: "
 					+ String.format("%.1f", temp));
 		} catch (TemperatureNoSignalException e) {
-			// TODO view.displayTemperature(0, true);
 			alarm.ring();
+			view.temperatureNoSignal();
 		}
 
 		view.repaint();
@@ -214,8 +213,9 @@ public class Monitor {
 
 			@Override
 			public void run() {
+				SafeLimit s = new SafeLimit();
 				PatientInfo p = new PatientInfo("Eric", "Utopia", "BK001", 20,
-						Gender.MALE, 150.5, 188.0, null, "--");
+						Gender.MALE, 150.5, 188.0, s, "--");
 				new Monitor(p);
 			}
 		});
