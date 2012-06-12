@@ -10,7 +10,7 @@ import java.util.Random;
  *
  * @author charmjunewonder
  */
-public class TemperatureSensor extends Senser{
+public class TemperatureSensor extends Sensor{
 	
 	public static final double NORMAL_HIGH_TEMPERATURE = 37.5;
 	public static final double NORMAL_LOW_TEMPERATURE = 36.5;

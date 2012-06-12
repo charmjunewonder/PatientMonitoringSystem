@@ -10,7 +10,7 @@ import java.util.Random;
  * 
  * @author charmjunewonder
  */
-public class BloodGlucoseLevelSensor extends Senser {
+public class BloodGlucoseLevelSensor extends Sensor {
 
 	public static final double NORMAL_HIGH_BLOOD_GLUCOSE_LEVEL = 180.0;
 	public static final double NORMAL_LOW_BLOOD_GLUCOSE_LEVEL = 64.8;

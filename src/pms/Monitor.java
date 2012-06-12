@@ -7,8 +7,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
 import pms.BloodGlucoseLevelSensor.BloodGlucoseLevelNoSignalException;
-import pms.BloodPressureSenser.BloodPressureNoSignalException;
-import pms.HeartRateSenser.HeartRateSenserNoSignalException;
+import pms.BloodPressureSensor.BloodPressureNoSignalException;
+import pms.HeartRateSensor.HeartRateSenserNoSignalException;
 import pms.Patient.Gender;
 import pms.TemperatureSensor.TemperatureNoSignalException;
 
@@ -26,9 +26,9 @@ public class Monitor {
 	private PMSGUI view;
 
 	private BloodGlucoseLevelSensor bloodGlucoseLevelSensor;
-	private BloodPressureSenser bloodPressureSensor;
+	private BloodPressureSensor bloodPressureSensor;
 	private TemperatureSensor temperatureSensor;
-	private HeartRateSenser heartRateSensor;
+	private HeartRateSensor heartRateSensor;
 	private IntravenousInputMachine intravenousInputMachine;
 	private VitalSignLogger vitalSignLogger;
 
@@ -46,9 +46,9 @@ public class Monitor {
 		view.setVisible(true);
 		
 		bloodGlucoseLevelSensor = new BloodGlucoseLevelSensor();
-		bloodPressureSensor = new BloodPressureSenser();
+		bloodPressureSensor = new BloodPressureSensor();
 		temperatureSensor = new TemperatureSensor();
-		heartRateSensor = new HeartRateSenser();
+		heartRateSensor = new HeartRateSensor();
 		intravenousInputMachine = new IntravenousInputMachine();
 		vitalSignLogger = new VitalSignLogger(patient);
 		
@@ -113,8 +113,8 @@ public class Monitor {
 		try {
 			double rate = heartRateSensor.getBeats();
 			rateOutOfLifeLimit = false;
-			if (rate > HeartRateSenser.NORMAL_HIGH_BEATS
-					|| rate < HeartRateSenser.NORMAL_LOW_BEATS)
+			if (rate > HeartRateSensor.NORMAL_HIGH_BEATS
+					|| rate < HeartRateSensor.NORMAL_LOW_BEATS)
 				rateOutOfLifeLimit = true;
 			view.displayHeartRate(rate, rateOutOfLifeLimit);
 			vitalSignLogger.addRecord("Heart Rate: " + (int)rate);
@@ -132,10 +132,10 @@ public class Monitor {
 			double highPressure = bloodPressureSensor.getHighPressure();
 			double lowPressure = bloodPressureSensor.getLowPressure();
 			pressureOutOfLifeLimit = false;
-			if (highPressure > BloodPressureSenser.NORMAL_HIGH_PRESSURE_UP
-					|| highPressure < BloodPressureSenser.NORMAL_HIGH_PRESSURE_DOWN
-					|| lowPressure > BloodPressureSenser.NORMAL_LOW_PRESSURE_UP
-					|| lowPressure < BloodPressureSenser.NORMAL_LOW_PRESSURE_DOWN)
+			if (highPressure > BloodPressureSensor.NORMAL_HIGH_PRESSURE_UP
+					|| highPressure < BloodPressureSensor.NORMAL_HIGH_PRESSURE_DOWN
+					|| lowPressure > BloodPressureSensor.NORMAL_LOW_PRESSURE_UP
+					|| lowPressure < BloodPressureSensor.NORMAL_LOW_PRESSURE_DOWN)
 				pressureOutOfLifeLimit = true;
 			view.displayBloodPressure(highPressure, lowPressure, pressureOutOfLifeLimit);
 			vitalSignLogger.addRecord("Pressure low: " + (int)lowPressure + "; high: " + (int)highPressure);
