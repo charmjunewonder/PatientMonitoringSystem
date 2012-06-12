@@ -107,7 +107,7 @@ public class Monitor {
 				}
 			}
 		};
-		new Timer(100, intravenousInputAction).start();
+		new Timer(1000, intravenousInputAction).start();
 	}
 
 	/**

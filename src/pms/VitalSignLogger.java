@@ -15,7 +15,7 @@ import java.util.Calendar;
  */
 public class VitalSignLogger {
 	
-	public static final String LOGFOLDER = "logfiles\\";
+	public static final String LOGFOLDER = "logfiles/";
 	public static final String EXTENSION = "patientinfo";
 	
 	private PrintWriter out;
@@ -26,10 +26,10 @@ public class VitalSignLogger {
 	 * @param patient target patient to record
 	 */
 	public VitalSignLogger(String patientName, String initialInfo) {
-		DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
 		Calendar cal = Calendar.getInstance();
 		String fileName = LOGFOLDER
-			+ patientName
+			+ patientName + "_"
 			+ dateFormat.format(cal.getTime()).toString()
 			+ "." + EXTENSION;
 		try {
