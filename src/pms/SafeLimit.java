@@ -14,8 +14,8 @@ public class SafeLimit {
 	public static final double DEFAULT_NORMAL_HIGH_PRESSURE_DOWN = 120;
 	public static final double DEFAULT_NORMAL_LOW_PRESSURE_UP = 79;
 	public static final double DEFAULT_NORMAL_LOW_PRESSURE_DOWN = 60;
-	public static final double DEFAULT_NORMAL_HIGH_BEATS = 100;
-	public static final double DEFAULT_NORMAL_LOW_BEATS = 60;
+	public static final double DEFAULT_NORMAL_HIGH_HEART_RATE = 100;
+	public static final double DEFAULT_NORMAL_LOW_HEART_RATE = 60;
 	public static final double DEFAULT_NORMAL_HIGH_TEMPERATURE = 37.5;
 	public static final double DEFAULT_NORMAL_LOW_TEMPERATURE = 36.5;
 
@@ -25,17 +25,26 @@ public class SafeLimit {
 	private double normalHighPressureDown;
 	private double normalLowPressureUp;
 	private double normalLowPressureDown;
-	private double normalHighBeats;
-	private double normalLowBeats;
+	private double normalHighHeartRate;
+	private double normalLowHeartRate;
 	private double normalHighTemperature;
 	private double normalLowTemperature;
-	
-	public SafeLimit(){
-		
+
+	public SafeLimit() {
+		normalHighBloodGlucoseLevel = DEFAULT_NORMAL_HIGH_BLOOD_GLUCOSE_LEVEL;
+		normalLowBloodGlucoseLevel = DEFAULT_NORMAL_LOW_BLOOD_GLUCOSE_LEVEL;
+		normalHighPressureUp = DEFAULT_NORMAL_HIGH_PRESSURE_UP;
+		normalHighPressureDown = DEFAULT_NORMAL_HIGH_PRESSURE_DOWN;
+		normalLowPressureUp = DEFAULT_NORMAL_LOW_PRESSURE_UP;
+		normalLowPressureDown = DEFAULT_NORMAL_LOW_PRESSURE_DOWN;
+		normalHighHeartRate = DEFAULT_NORMAL_HIGH_HEART_RATE;
+		normalLowHeartRate = DEFAULT_NORMAL_LOW_HEART_RATE;
+		normalHighTemperature = DEFAULT_NORMAL_HIGH_TEMPERATURE;
+		normalLowTemperature = DEFAULT_NORMAL_LOW_TEMPERATURE;
 	}
 
 	/**
-	 * @return the normalHighBloodGlucoseLevel
+	 * return the normalHighBloodGlucoseLevel
 	 */
 	public double getNormalHighBloodGlucoseLevel() {
 		return normalHighBloodGlucoseLevel;
@@ -44,7 +53,8 @@ public class SafeLimit {
 	/**
 	 * @param normalHighBloodGlucoseLevel the normalHighBloodGlucoseLevel to set
 	 */
-	public void setNormalHighBloodGlucoseLevel(double normalHighBloodGlucoseLevel) {
+	public void setNormalHighBloodGlucoseLevel(
+			double normalHighBloodGlucoseLevel) {
 		this.normalHighBloodGlucoseLevel = normalHighBloodGlucoseLevel;
 	}
 
@@ -121,29 +131,29 @@ public class SafeLimit {
 	/**
 	 * @return the normalHighBeats
 	 */
-	public double getNormalHighBeats() {
-		return normalHighBeats;
+	public double getNormalHighHeartRate() {
+		return normalHighHeartRate;
 	}
 
 	/**
-	 * @param normalHighBeats the normalHighBeats to set
+	 * @param normalHighHeartRate the normalHighBeats to set
 	 */
-	public void setNormalHighBeats(double normalHighBeats) {
-		this.normalHighBeats = normalHighBeats;
+	public void setNormalHighHeartRate(double normalHighHeartRate) {
+		this.normalHighHeartRate = normalHighHeartRate;
 	}
 
 	/**
 	 * @return the normalLowBeats
 	 */
-	public double getNormalLowBeats() {
-		return normalLowBeats;
+	public double getNormalLowHeartRate() {
+		return normalLowHeartRate;
 	}
 
 	/**
-	 * @param normalLowBeats the normalLowBeats to set
+	 * @param normalLowHeartRate the normalLowBeats to set
 	 */
-	public void setNormalLowBeats(double normalLowBeats) {
-		this.normalLowBeats = normalLowBeats;
+	public void setNormalLowHeartRate(double normalLowHeartRate) {
+		this.normalLowHeartRate = normalLowHeartRate;
 	}
 
 	/**

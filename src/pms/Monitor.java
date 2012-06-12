@@ -32,6 +32,7 @@ public class Monitor {
 	private IntravenousInputMachine intravenousInputMachine;
 	private VitalSignLogger vitalSignLogger;
 	private Alarm alarm;
+	private SafeLimit safeLimit;
 
 	private boolean glucoseOutOfLifeLimit;
 	private boolean pressureOutOfLifeLimit;
@@ -54,6 +55,7 @@ public class Monitor {
 		intravenousInputMachine = new IntravenousInputMachine();
 		vitalSignLogger = new VitalSignLogger(patient);
 		alarm = new Alarm();
+		safeLimit = new SafeLimit();
 
 		start();
 	}
@@ -116,10 +118,11 @@ public class Monitor {
 		try {
 			double rate = heartRateSensor.getBeats();
 			rateOutOfLifeLimit = false;
-			if (rate > HeartRateSenser.NORMAL_HIGH_BEATS
-					|| rate < HeartRateSenser.NORMAL_LOW_BEATS) {
+			if (rate > safeLimit.getNormalHighHeartRate()
+					|| rate < safeLimit.getNormalLowHeartRate()) {
 				rateOutOfLifeLimit = true;
 				alarm.ring();
+				view.displayInfo("Heart rate is out of safe limit..");
 			}
 			view.displayHeartRate(rate, rateOutOfLifeLimit);
 			vitalSignLogger.addRecord("Heart Rate: " + (int) rate);
@@ -138,12 +141,13 @@ public class Monitor {
 			double highPressure = bloodPressureSensor.getHighPressure();
 			double lowPressure = bloodPressureSensor.getLowPressure();
 			pressureOutOfLifeLimit = false;
-			if (highPressure > BloodPressureSenser.NORMAL_HIGH_PRESSURE_UP
-					|| highPressure < BloodPressureSenser.NORMAL_HIGH_PRESSURE_DOWN
-					|| lowPressure > BloodPressureSenser.NORMAL_LOW_PRESSURE_UP
-					|| lowPressure < BloodPressureSenser.NORMAL_LOW_PRESSURE_DOWN) {
+			if (highPressure > safeLimit.getNormalHighPressureUp()
+					|| highPressure < safeLimit.getNormalHighPressureDown()
+					|| lowPressure > safeLimit.getNormalLowPressureUp()
+					|| lowPressure < safeLimit.getNormalLowPressureDown()) {
 				pressureOutOfLifeLimit = true;
 				alarm.ring();
+				view.displayInfo("Blood pressure is out of safe limit.");
 			}
 			view.displayBloodPressure(highPressure, lowPressure,
 					pressureOutOfLifeLimit);
@@ -164,10 +168,11 @@ public class Monitor {
 		try {
 			double glucose = bloodGlucoseLevelSensor.getGlucoseLevel();
 			glucoseOutOfLifeLimit = false;
-			if (glucose > BloodGlucoseLevelSensor.NORMAL_HIGH_BLOOD_GLUCOSE_LEVEL
-					|| glucose < BloodGlucoseLevelSensor.NORMAL_LOW_BLOOD_GLUCOSE_LEVEL) {
+			if (glucose > safeLimit.getNormalHighBloodGlucoseLevel()
+					|| glucose < safeLimit.getNormalLowBloodGlucoseLevel()) {
 				glucoseOutOfLifeLimit = true;
 				alarm.ring();
+				view.displayInfo("Blood glucose level is out of safe limit.");
 			}
 			view.displayBloodGlucoseLevel(glucose, glucoseOutOfLifeLimit);
 			vitalSignLogger.addRecord("Blood Glucose Level: "
@@ -187,10 +192,11 @@ public class Monitor {
 		try {
 			double temp = temperatureSensor.getTemperature();
 			temperatureOutOfLifeLimit = false;
-			if (temp > TemperatureSensor.NORMAL_HIGH_TEMPERATURE
-					|| temp < TemperatureSensor.NORMAL_LOW_TEMPERATURE) {
+			if (temp > safeLimit.getNormalHighTemperature()
+					|| temp < safeLimit.getNormalLowTemperature()) {
 				temperatureOutOfLifeLimit = true;
 				alarm.ring();
+				view.displayInfo("Body temperature is out of safe limit.");
 			}
 			view.displayTemperature(temp, temperatureOutOfLifeLimit);
 			vitalSignLogger.addRecord("Temperature: "
