@@ -121,12 +121,14 @@ public class Monitor {
 					|| rate < safeLimit.getNormalLowHeartRate()) {
 				rateOutOfLifeLimit = true;
 				alarm.ring();
+				view.addInfo("[Alarm is ringing!!!]");
 				view.addInfo("Heart rate is out of safe limit.");
 			}
 			view.displayHeartRate(rate, rateOutOfLifeLimit);
 			vitalSignLogger.addRecord("Heart Rate: " + (int) rate);
 		} catch (HeartRateSenserNoSignalException hrsnse) {
 			alarm.ring();
+			view.addInfo("[Alarm is ringing!!!]");
 			view.heartRateNoSignal();
 		}
 		view.repaint();
@@ -146,6 +148,7 @@ public class Monitor {
 					|| lowPressure < safeLimit.getNormalLowPressureDown()) {
 				pressureOutOfLifeLimit = true;
 				alarm.ring();
+				view.addInfo("[Alarm is ringing!!!]");
 				view.addInfo("Blood pressure is out of safe limit.");
 			}
 			view.displayBloodPressure(highPressure, lowPressure,
@@ -154,6 +157,7 @@ public class Monitor {
 					+ "; high: " + (int) highPressure);
 		} catch (BloodPressureNoSignalException e) {
 			alarm.ring();
+			view.addInfo("[Alarm is ringing!!!]");
 			view.bloodPressureNoSignal();
 		}
 
@@ -171,6 +175,7 @@ public class Monitor {
 					|| glucose < safeLimit.getNormalLowBloodGlucoseLevel()) {
 				glucoseOutOfLifeLimit = true;
 				alarm.ring();
+				view.addInfo("[Alarm is ringing!!!]");
 				view.addInfo("Blood glucose level is out of safe limit.");
 			}
 			view.displayBloodGlucoseLevel(glucose, glucoseOutOfLifeLimit);
@@ -178,6 +183,7 @@ public class Monitor {
 					+ String.format("%.1f", glucose));
 		} catch (BloodGlucoseLevelNoSignalException e) {
 			alarm.ring();
+			view.addInfo("[Alarm is ringing!!!]");
 			view.bloodGlucoseLevelNoSignal();
 		}
 
@@ -195,6 +201,7 @@ public class Monitor {
 					|| temp < safeLimit.getNormalLowTemperature()) {
 				temperatureOutOfLifeLimit = true;
 				alarm.ring();
+				view.addInfo("[Alarm is ringing!!!]");
 				view.addInfo("Body temperature is out of safe limit.");
 			}
 			view.displayTemperature(temp, temperatureOutOfLifeLimit);
@@ -202,6 +209,7 @@ public class Monitor {
 					+ String.format("%.1f", temp));
 		} catch (TemperatureNoSignalException e) {
 			alarm.ring();
+			view.addInfo("[Alarm is ringing!!!]");
 			view.temperatureNoSignal();
 		}
 
