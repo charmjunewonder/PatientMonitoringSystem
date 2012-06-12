@@ -25,11 +25,11 @@ public class VitalSignLogger {
 	 * 
 	 * @param patient target patient to record
 	 */
-	public VitalSignLogger(PatientInfo patient) {
+	public VitalSignLogger(String patientName, String initialInfo) {
 		DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
 		Calendar cal = Calendar.getInstance();
 		String fileName = LOGFOLDER
-			+ patient.getName()
+			+ patientName
 			+ dateFormat.format(cal.getTime()).toString()
 			+ "." + EXTENSION;
 		try {
@@ -42,7 +42,7 @@ public class VitalSignLogger {
 		catch(IOException ex) {
 			throw new RuntimeException(ex);
 		}
-		out.println(patient);
+		out.println(initialInfo);
 		out.println("********************");
 		out.flush();
 	}
