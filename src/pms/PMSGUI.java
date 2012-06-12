@@ -629,6 +629,7 @@ public class PMSGUI extends JFrame implements Display {
 	 */
 	@Override
 	public void heartRateNoSignal() {
+		ecgPanel.setOpaque(false);
 		ecgTitleLabel.setForeground(NO_SIGNAL_COLOR);
 		ecgValueLabel.setForeground(NO_SIGNAL_COLOR);
 		ecgValueLabel.setText(NO_SIGNAL_TEXT);
@@ -639,6 +640,7 @@ public class PMSGUI extends JFrame implements Display {
 	 */
 	@Override
 	public void temperatureNoSignal() {
+		temperaturePanel.setOpaque(false);
 		tempTitleLabel.setForeground(NO_SIGNAL_COLOR);
 		tempValueLabel.setForeground(NO_SIGNAL_COLOR);
 		tempValueLabel.setText(NO_SIGNAL_TEXT);
@@ -649,6 +651,7 @@ public class PMSGUI extends JFrame implements Display {
 	 */
 	@Override
 	public void bloodPressureNoSignal() {
+		nibpPanel.setOpaque(false);
 		nibpTitleLabel.setForeground(NO_SIGNAL_COLOR);
 		nibpValueLabel.setForeground(NO_SIGNAL_COLOR);
 		nibpValueLabel.setText(NO_SIGNAL_TEXT);
@@ -659,6 +662,7 @@ public class PMSGUI extends JFrame implements Display {
 	 */
 	@Override
 	public void bloodGlucoseLevelNoSignal() {
+		gluPanel.setOpaque(false);
 		gluTitleLabel.setForeground(NO_SIGNAL_COLOR);
 		gluValueLabel.setForeground(NO_SIGNAL_COLOR);
 		gluValueLabel.setText(NO_SIGNAL_TEXT);
