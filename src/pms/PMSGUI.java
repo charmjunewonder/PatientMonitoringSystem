@@ -546,6 +546,7 @@ public class PMSGUI extends JFrame implements Display {
 			ecgTitleLabel.setForeground(ECG_COLOR);
 			ecgValueLabel.setForeground(ECG_COLOR);
 		}
+		ecgPanel.repaint();
 	}
 
 	/**
@@ -567,6 +568,7 @@ public class PMSGUI extends JFrame implements Display {
 			tempTitleLabel.setForeground(TEMP_COLOR);
 			tempValueLabel.setForeground(TEMP_COLOR);
 		}
+		temperaturePanel.repaint();
 	}
 
 	/**
@@ -589,6 +591,7 @@ public class PMSGUI extends JFrame implements Display {
 			nibpTitleLabel.setForeground(NIBP_COLOR);
 			nibpValueLabel.setForeground(NIBP_COLOR);
 		}
+		nibpPanel.repaint();
 	}
 
 	/**
@@ -610,6 +613,7 @@ public class PMSGUI extends JFrame implements Display {
 			gluTitleLabel.setForeground(GLU_COLOR);
 			gluValueLabel.setForeground(GLU_COLOR);
 		}
+		gluPanel.repaint();
 	}
 	
 
@@ -633,6 +637,7 @@ public class PMSGUI extends JFrame implements Display {
 		ecgTitleLabel.setForeground(NO_SIGNAL_COLOR);
 		ecgValueLabel.setForeground(NO_SIGNAL_COLOR);
 		ecgValueLabel.setText(NO_SIGNAL_TEXT);
+		ecgPanel.repaint();
 	}
 
 	/**
@@ -644,6 +649,7 @@ public class PMSGUI extends JFrame implements Display {
 		tempTitleLabel.setForeground(NO_SIGNAL_COLOR);
 		tempValueLabel.setForeground(NO_SIGNAL_COLOR);
 		tempValueLabel.setText(NO_SIGNAL_TEXT);
+		temperaturePanel.repaint();
 	}
 
 	/**
@@ -655,6 +661,7 @@ public class PMSGUI extends JFrame implements Display {
 		nibpTitleLabel.setForeground(NO_SIGNAL_COLOR);
 		nibpValueLabel.setForeground(NO_SIGNAL_COLOR);
 		nibpValueLabel.setText(NO_SIGNAL_TEXT);
+		nibpPanel.repaint();
 	}
 
 	/**
@@ -666,5 +673,6 @@ public class PMSGUI extends JFrame implements Display {
 		gluTitleLabel.setForeground(NO_SIGNAL_COLOR);
 		gluValueLabel.setForeground(NO_SIGNAL_COLOR);
 		gluValueLabel.setText(NO_SIGNAL_TEXT);
+		gluPanel.repaint();
 	}
 }
