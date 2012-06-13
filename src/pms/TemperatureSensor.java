@@ -1,14 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package pms;
 
 import java.util.Random;
 
 /**
- *
+ * Class TemperatureSensor is to measure the temperature of the patient
  * @author charmjunewonder
+ * @version 1.0
  */
 public class TemperatureSensor extends Sensor{
 	

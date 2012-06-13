@@ -1,4 +1,10 @@
 package pms;
+/**
+ * Class to store the information of a specific patient.
+ * @author Eric
+ * @version 1.0
+ * 
+ */
 public class PatientInfo {
 
 	private String name;
@@ -12,6 +18,7 @@ public class PatientInfo {
 	private String specificCondition;
 
 	/**
+	 * create an instance of a patientInfo to store the information
 	 * @param name
 	 * @param address
 	 * @param patientNumber

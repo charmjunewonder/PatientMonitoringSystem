@@ -13,7 +13,11 @@ import pms.PatientInfo.Gender;
 import pms.TemperatureSensor.TemperatureNoSignalException;
 
 /**
+ * This class is to display the current state of the patient and when the
+ * emergency happens, it can respond to it.
+ * 
  * @author Eric
+ * @version 1.0
  * 
  */
 public class Monitor {
@@ -52,7 +56,8 @@ public class Monitor {
 		temperatureSensor = new TemperatureSensor();
 		heartRateSensor = new HeartRateSensor();
 		intravenousInputMachine = new IntravenousInputMachine();
-		vitalSignLogger = new VitalSignLogger(patient.getName(), patient.toString());
+		vitalSignLogger = new VitalSignLogger(patient.getName(),
+				patient.toString());
 		alarm = new Alarm();
 		safeLimit = patient.getSafeLimits();
 
