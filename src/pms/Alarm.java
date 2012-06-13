@@ -4,7 +4,7 @@ package pms;
  * Simulates a alarm.
  * 
  * @author Anthony
- * @version 0.1
+ * @version 1.0
  */
 public class Alarm {
 	

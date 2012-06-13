@@ -4,6 +4,7 @@ import java.util.Random;
 
 /**
  * Class TemperatureSensor is to measure the temperature of the patient
+ * 
  * @author charmjunewonder
  * @version 1.0
  */

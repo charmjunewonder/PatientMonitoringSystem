@@ -11,7 +11,7 @@ import java.util.Calendar;
  * Information logger for PMS. Records patient's basic information and vital signs.
  * 
  * @author Anthony
- * @version 0.1
+ * @version 1.0
  */
 public class VitalSignLogger {
 	

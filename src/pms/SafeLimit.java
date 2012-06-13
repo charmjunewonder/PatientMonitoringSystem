@@ -1,11 +1,10 @@
-/**
- * 
- */
 package pms;
 
 /**
- * @author charmjunewonder
+ * Class for safe limits.
  * 
+ * @author charmjunewonder
+ * @version 1.0
  */
 public class SafeLimit {
 	public static final double DEFAULT_NORMAL_HIGH_BLOOD_GLUCOSE_LEVEL = 180.0;

@@ -1,16 +1,16 @@
 package pms;
 
 /**
- * Sensor is a interface defines methods needed for a vital sign senser.
+ * Sensor is a interface defines methods needed for a vital sign sensor.
  * 
  * @author Anthony
- * @version 0.1
+ * @version 1.0
  */
 public abstract class Sensor {
 	
 	
 	/**
-	 * Represents a no signal error when a senser failed.
+	 * Represents a no signal error when a sensor failed.
 	 */
 	public class NoSignalException extends RuntimeException {
 

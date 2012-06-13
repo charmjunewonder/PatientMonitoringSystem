@@ -4,7 +4,7 @@ import java.util.Random;
 
 /**
  * Class BloodGlucoseLevelSensor is to measure the blood glucose level of the
- * patient
+ * patient.
  * 
  * @author charmjunewonder
  * @version 1.0

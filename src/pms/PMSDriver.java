@@ -6,7 +6,7 @@ import javax.swing.SwingUtilities;
  * Driver for Patient Monitoring System.
  *
  * @author Anthony
- * @version 0.1
+ * @version 1.0
  */
 public class PMSDriver {
 	

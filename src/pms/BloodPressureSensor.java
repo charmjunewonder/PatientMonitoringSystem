@@ -8,7 +8,7 @@ import pms.HeartRateSensor.HeartRateSenserNoSignalException;
  * Simulates a sensor measuring blood pressure from one patient.
  * 
  * @author Anthony
- * @version 0.1
+ * @version 1.0
  */
 public class BloodPressureSensor extends Sensor {
 	

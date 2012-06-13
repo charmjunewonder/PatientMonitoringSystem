@@ -8,7 +8,7 @@ import java.util.Random;
  * Heart rate is generated randomly.
  *
  * @author Anthony
- * @version 0.1
+ * @version 1.0
  */
 public class HeartRateSensor extends Sensor {
 	

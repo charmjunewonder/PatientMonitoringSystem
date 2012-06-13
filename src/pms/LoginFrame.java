@@ -15,8 +15,8 @@ import pms.PatientInfo.Gender;
 /**
  * LoginFrame of PatientInfo Monitoring System.
  *
- * @author charmjunewonder
- * @version 0.1
+ * @author Anthony
+ * @version 1.0
  */
 public class LoginFrame extends JFrame{
 	
