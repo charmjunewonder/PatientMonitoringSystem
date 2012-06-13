@@ -23,7 +23,7 @@ public class Monitor {
 	public static final int TEMPERATURE_TIME = 1000;
 	public static final int HEART_RATE_TIME = 1000;
 
-	private PMSGUI view;
+	private Display view;
 
 	private BloodGlucoseLevelSensor bloodGlucoseLevelSensor;
 	private BloodPressureSensor bloodPressureSensor;
@@ -46,7 +46,6 @@ public class Monitor {
 	 */
 	public Monitor(PatientInfo patient) {
 		view = new PMSGUI(patient);
-		view.setVisible(true);
 
 		bloodGlucoseLevelSensor = new BloodGlucoseLevelSensor();
 		bloodPressureSensor = new BloodPressureSensor();
@@ -131,7 +130,7 @@ public class Monitor {
 			view.addInfo("[Alarm is ringing!!!]");
 			view.heartRateNoSignal();
 		}
-		view.repaint();
+		//view.repaint();
 	}
 
 	/**
@@ -161,7 +160,7 @@ public class Monitor {
 			view.bloodPressureNoSignal();
 		}
 
-		view.repaint();
+		//view.repaint();
 	}
 
 	/**
@@ -187,7 +186,7 @@ public class Monitor {
 			view.bloodGlucoseLevelNoSignal();
 		}
 
-		view.repaint();
+		//view.repaint();
 	}
 
 	/**
@@ -213,7 +212,7 @@ public class Monitor {
 			view.temperatureNoSignal();
 		}
 
-		view.repaint();
+		//view.repaint();
 	}
 
 	public static void main(String[] args) {
