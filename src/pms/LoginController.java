@@ -181,16 +181,16 @@ public class LoginController {
 					weight,
 					height,
 					new SafeLimit(
-					Double.parseDouble(lowHeartRate),
-					Double.parseDouble(highHeartRate),
-					Double.parseDouble(lowBodyTemperature),
-					Double.parseDouble(highBodyTemperature),
-					Double.parseDouble(lowLowBloodPressure),
-					Double.parseDouble(lowHighBloodPressure),
-					Double.parseDouble(highLowBloodPressure),
-					Double.parseDouble(highHighBloodPressure),
+					Double.parseDouble(highBloodGlucose),
 					Double.parseDouble(lowBloodGlucose),
-					Double.parseDouble(highBloodGlucose)
+					Double.parseDouble(highHighBloodPressure),
+					Double.parseDouble(highLowBloodPressure),
+					Double.parseDouble(lowHighBloodPressure),
+					Double.parseDouble(lowLowBloodPressure),
+					Double.parseDouble(highHeartRate),
+					Double.parseDouble(lowHeartRate),
+					Double.parseDouble(highBodyTemperature),
+					Double.parseDouble(lowBodyTemperature)
 					),
 					condition
 					));
