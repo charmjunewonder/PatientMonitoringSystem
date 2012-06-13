@@ -13,7 +13,11 @@ import pms.PatientInfo.Gender;
 import pms.TemperatureSensor.TemperatureNoSignalException;
 
 /**
+ * This class is to display the current state of the patient and when the
+ * emergency happens, it can respond to it.
+ * 
  * @author Eric
+ * @version 1.0
  * 
  */
 public class Monitor {
@@ -23,7 +27,7 @@ public class Monitor {
 	public static final int TEMPERATURE_TIME = 1000;
 	public static final int HEART_RATE_TIME = 1000;
 
-	private PMSGUI view;
+	private Display view;
 
 	private BloodGlucoseLevelSensor bloodGlucoseLevelSensor;
 	private BloodPressureSensor bloodPressureSensor;
@@ -46,16 +50,16 @@ public class Monitor {
 	 */
 	public Monitor(PatientInfo patient) {
 		view = new PMSGUI(patient);
-		view.setVisible(true);
 
 		bloodGlucoseLevelSensor = new BloodGlucoseLevelSensor();
 		bloodPressureSensor = new BloodPressureSensor();
 		temperatureSensor = new TemperatureSensor();
 		heartRateSensor = new HeartRateSensor();
 		intravenousInputMachine = new IntravenousInputMachine();
-		vitalSignLogger = new VitalSignLogger(patient.getName(), patient.toString());
+		vitalSignLogger = new VitalSignLogger(patient.getName(),
+				patient.toString());
 		alarm = new Alarm();
-		safeLimit = new SafeLimit();
+		safeLimit = patient.getSafeLimits();
 
 		start();
 	}
@@ -131,7 +135,6 @@ public class Monitor {
 			view.addInfo("[Alarm is ringing!!!]");
 			view.heartRateNoSignal();
 		}
-		view.repaint();
 	}
 
 	/**
@@ -160,8 +163,6 @@ public class Monitor {
 			view.addInfo("[Alarm is ringing!!!]");
 			view.bloodPressureNoSignal();
 		}
-
-		view.repaint();
 	}
 
 	/**
@@ -186,8 +187,6 @@ public class Monitor {
 			view.addInfo("[Alarm is ringing!!!]");
 			view.bloodGlucoseLevelNoSignal();
 		}
-
-		view.repaint();
 	}
 
 	/**
@@ -212,8 +211,6 @@ public class Monitor {
 			view.addInfo("[Alarm is ringing!!!]");
 			view.temperatureNoSignal();
 		}
-
-		view.repaint();
 	}
 
 	public static void main(String[] args) {

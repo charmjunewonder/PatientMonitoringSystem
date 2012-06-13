@@ -72,6 +72,8 @@ public class PMSGUI extends JFrame implements Display {
 		heightLabel.setText(Double.toString(patient.getHeight()));
 		weightLabel.setText(Double.toString(patient.getWeight()));
 		medicalConditionTextArea.setText(patient.getSpecificCondition());
+		
+		setVisible(true);
 	}
 	
 	/**
