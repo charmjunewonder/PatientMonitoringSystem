@@ -54,7 +54,7 @@ public class Monitor {
 		intravenousInputMachine = new IntravenousInputMachine();
 		vitalSignLogger = new VitalSignLogger(patient.getName(), patient.toString());
 		alarm = new Alarm();
-		safeLimit = new SafeLimit();
+		safeLimit = patient.getSafeLimits();
 
 		start();
 	}
@@ -130,7 +130,6 @@ public class Monitor {
 			view.addInfo("[Alarm is ringing!!!]");
 			view.heartRateNoSignal();
 		}
-		//view.repaint();
 	}
 
 	/**
@@ -159,8 +158,6 @@ public class Monitor {
 			view.addInfo("[Alarm is ringing!!!]");
 			view.bloodPressureNoSignal();
 		}
-
-		//view.repaint();
 	}
 
 	/**
@@ -185,8 +182,6 @@ public class Monitor {
 			view.addInfo("[Alarm is ringing!!!]");
 			view.bloodGlucoseLevelNoSignal();
 		}
-
-		//view.repaint();
 	}
 
 	/**
@@ -211,8 +206,6 @@ public class Monitor {
 			view.addInfo("[Alarm is ringing!!!]");
 			view.temperatureNoSignal();
 		}
-
-		//view.repaint();
 	}
 
 	public static void main(String[] args) {
