@@ -11,11 +11,6 @@ import java.util.Random;
  */
 public class BloodGlucoseLevelSensor extends Sensor {
 
-	public static final double NORMAL_HIGH_BLOOD_GLUCOSE_LEVEL = 180.0;
-	public static final double NORMAL_LOW_BLOOD_GLUCOSE_LEVEL = 64.8;
-	public static final double DEAD_LOW_BLOOD_GLUCOSE_LEVEL = 15.0;
-	public static final double DEAD_HIGH_BLOOD_GLUCOSE_LEVEL = 200.0;
-
 	private Random rand;
 
 	// private double previousBloodGlucoseLevel;
@@ -46,7 +41,7 @@ public class BloodGlucoseLevelSensor extends Sensor {
 		// if (curGlucose < DEAD_LOW_BLOOD_GLUCOSE_LEVEL) curGlucose += 5;
 		// else if (curGlucose > DEAD_HIGH_BLOOD_GLUCOSE_LEVEL) curGlucose -= 5;
 		// previousBloodGlucoseLevel = curGlucose;
-		return rand.nextDouble() * 200 + DEAD_LOW_BLOOD_GLUCOSE_LEVEL;
+		return rand.nextDouble() * 200 + 15.0;
 	}
 
 	/**

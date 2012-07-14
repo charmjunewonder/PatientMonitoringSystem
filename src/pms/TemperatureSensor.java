@@ -10,11 +10,6 @@ import java.util.Random;
  */
 public class TemperatureSensor extends Sensor{
 	
-	public static final double NORMAL_HIGH_TEMPERATURE = 37.5;
-	public static final double NORMAL_LOW_TEMPERATURE = 36.5;
-	public static final double DEAD_LOW_TEMPERATURE = 34.0;
-	public static final double DEAD_HIGH_TEMPERATURE = 40.0;
-	
 //	private double previousTemperature;
 	private Random rand;
 
@@ -40,7 +35,7 @@ public class TemperatureSensor extends Sensor{
 //		if(curTemp < DEAD_LOW_TEMPERATURE) curTemp += 0.10;
 //		else if(curTemp > DEAD_HIGH_TEMPERATURE) curTemp -= 0.10;
 //		previousTemperature = curTemp;
-		return rand.nextDouble() * 2 + NORMAL_LOW_TEMPERATURE;
+		return rand.nextDouble() * 2 + 36.5;
 	}
 
 	/**

@@ -12,11 +12,6 @@ import java.util.Random;
  */
 public class HeartRateSensor extends Sensor {
 	
-	public static final double MAX_HEARTBEATS = 300;
-	public static final double MIN_HEARTBEATS = 25;
-	public static final double NORMAL_HIGH_BEATS = 100;
-	public static final double NORMAL_LOW_BEATS = 60;
-	
 	private Random rand;
 	
 	/**
@@ -35,7 +30,7 @@ public class HeartRateSensor extends Sensor {
 	public double getBeats() throws HeartRateSenserNoSignalException{
 		int exceptionRandom = rand.nextInt(10);
 		if(exceptionRandom == 0) throw new HeartRateSenserNoSignalException();
-		return rand.nextDouble() * 80 + MIN_HEARTBEATS;
+		return rand.nextDouble() * 80 + 25;
 	}
 	
 	/**

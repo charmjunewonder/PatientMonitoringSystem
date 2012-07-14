@@ -1,10 +1,6 @@
 package pms;
 
 /**
- * 
- */
-
-/**
  * This interface is to show the status of the patient.
  * @author charmjunewonder
  * @version 1.0
